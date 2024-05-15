@@ -2,7 +2,7 @@
   <div>
    <h1>{{ name }}</h1>
    <div v-if="pending">Loading... </div>
-   <h1>Projects</h1>
+   <h1>Projects examples</h1>
    <ul>
     <li v-for="project in projects" :key="project.name">
 
@@ -12,7 +12,7 @@
    </ul>
   </div>
   <div>
-    <h1>Blogs</h1>
+    <h1>Blogs example</h1>
     <ul>
       <li v-for="blog in blogs" :key="blog.title">
         <h2>{{ blog.title }}</h2>
