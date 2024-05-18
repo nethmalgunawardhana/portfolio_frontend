@@ -24,7 +24,7 @@
 
 
 <script setup>
-  const name ='NETHMAL GUNAWARDHANA';
+  const name ='NETHMAL RAVIHANSA GUNAWARDHANA';
   const { data: projects,pending, error }=useFetch('http://localhost:5000/projects');
 
   const {data: blogs,pending: pendingBlogs,error: errorBlogs,} = useFetch("http://localhost:5000/blogs");
