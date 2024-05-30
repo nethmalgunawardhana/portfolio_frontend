@@ -99,8 +99,9 @@ const createProject = async () => {
     }
 
     const result = await response.json();
-    projects.value.push(result);
+    projects.value.push(result);//add new project to the last
 
+    //clear the form
     newProject.value.name = '';
     newProject.value.description = '';
   } catch (error) {
@@ -122,11 +123,17 @@ const updateProject = async () => {
       throw new Error('Failed to update project');
     }
 
-    const result = await response.json();
-    const index = projects.value.findIndex(project => project.id === result.id);
-    if (index !== -1) {
-      projects.value[index] = result;
-    }
+    const responseText = await response.text();
+    console.log("Raw Response:", responseText);
+
+    // Try parsing the JSON response
+    const data = JSON.parse(responseText);
+
+    // find the project in the projects array and update it
+    const index = projects.value.findIndex(
+      (project) => project._id === data._id
+    );
+    projects.value[index] = data;
 
     selectedProject.value.id = '';
     selectedProject.value.name = '';
@@ -146,8 +153,19 @@ const deleteProject = async () => {
       throw new Error('Failed to delete project');
     }
 
-    projects.value = projects.value.filter(project => project.id !== deleteProjectId.value);
-    deleteProjectId.value = '';
+    const responseText = await response.text();
+    console.log("Raw Response:", responseText);
+
+    // Try parsing the JSON response
+    const data = JSON.parse(responseText);
+
+    // remove the project from the projects array
+    const index = projects.value.findIndex(
+      (project) => project._id === data._id
+    );
+    projects.value.splice(index, 1);
+      // clear the deleteId object
+      deleteId.value = "";
   } catch (error) {
     console.error('Error:', error);
   }
