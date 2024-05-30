@@ -7,6 +7,7 @@
     <li v-for="project in projects" :key="project.name">
 
       <h2> {{ project.name}} </h2>
+      <p>{{ project._id}}</p>
       <p>{{ project.description }}</p>
     </li>
    </ul>
