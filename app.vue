@@ -21,61 +21,189 @@
     </ul>
   </div>
   <div>
-<h1>Create a New Project</h1>
+<h1 id="header"><u>Create a New Project</u></h1>
 <form @submit.prevent="createProject">
 <div>
   <label for="name">Project Names:</label>
   <input type="text" v-model="newProject.name" id="name" required/>
 </div>
 <div>
-  <label for="description">Project Names:</label>
+  <label for="description">Description:</label>
   <textarea  v-model="newProject.description" id="description" required></textarea>
 </div>
 
 <button type="submit">Create Project</button>
 
 </form>
+<h1 id="header"><u> Update a Project</u></h1>
+<form @submit.prevent="updateProject">
+  <div>
+    <label for="update-id">Project ID:</label>
+    <input type="text" v-model="selectedProject.id" id="update-id" required/>
+  </div>
+  <div>
+    <label for="update-name">Update Project Name:</label>
+    <input type="text" v-model="selectedProject.name" id="update-name" required/>
+  </div>
+  <div>
+    <label for="update-description">Update Project Description:</label>
+    <textarea v-model="selectedProject.description" id="update-description" required></textarea>
+  </div>
+  <button type="submit">Update Project</button>
+</form>
+<h1 id="header"><u>Delete a Project</u></h1>
+<form @submit.prevent="deleteProject">
+  <div>
+    <label for="delete-id">Project ID:</label>
+    <input type="text" v-model="deleteProjectId" id="delete-id" required/>
+  </div>
+  <button type="submit">Delete Project</button>
+</form>
+
+
 </div>
 </template>
 
 
 <script setup>
-  const name ='NETHMAL RAVIHANSA GUNAWARDHANA';
-  const { data: projects,pending, error }=useFetch('http://localhost:5000/projects');
 
-  const {data: blogs,pending: pendingBlogs,error: errorBlogs,} = useFetch("http://localhost:5000/blogs");
+const name = 'NETHMAL RAVIHANSA GUNAWARDHANA';
+const { data: projects, pending, error } = useFetch('http://localhost:5000/projects');
+const { data: blogs, pending: pendingBlogs, error: errorBlogs } = useFetch('http://localhost:5000/blogs');
 
-  const newProject=ref({
-    name: '',
-    description:'',
-  });
-  const createProject=async()=>{
-    console.log(newProject.value);
+const newProject = ref({
+  name: '',
+  description: ''
+});
 
-    try{
-      const response=await fetch ('http://localhost:5000/projects',{
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json',
-        },
-        body:JSON.stringify(newProject.value),
-      });
+const selectedProject = ref({
+  id: '',
+  name: '',
+  description: ''
+});
 
-      if(!response.ok){
-        throw new Error('Failed to create project');
-      }
-      const result =await response.json();
-      projects.value.push(result);//add new project to the last
+const deleteProjectId = ref('');
 
-      //clear the form
-      newProject.value.name = '';
-      newProject.value.description = '';
+const createProject = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/projects', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newProject.value),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create project');
     }
-    catch(error){
-      console.error('Error:',error);
+
+    const result = await response.json();
+    projects.value.push(result);
+
+    newProject.value.name = '';
+    newProject.value.description = '';
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
+const updateProject = async () => {
+  try {
+    const response = await fetch(`http://localhost:5000/projects/${selectedProject.value.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(selectedProject.value),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update project');
     }
-  };
+
+    const result = await response.json();
+    const index = projects.value.findIndex(project => project.id === result.id);
+    if (index !== -1) {
+      projects.value[index] = result;
+    }
+
+    selectedProject.value.id = '';
+    selectedProject.value.name = '';
+    selectedProject.value.description = '';
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
+const deleteProject = async () => {
+  try {
+    const response = await fetch(`http://localhost:5000/projects/${deleteProjectId.value}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete project');
+    }
+
+    projects.value = projects.value.filter(project => project.id !== deleteProjectId.value);
+    deleteProjectId.value = '';
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 </script>
 
-<style></style>
+
+<style>
+form {
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #423f3f;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 2px 3px 10px #353131;
+  max-width: 500px;
+  background-color: #f9f9f9;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+#header {
+  text-align: center;
+}
+
+</style>
+
 
