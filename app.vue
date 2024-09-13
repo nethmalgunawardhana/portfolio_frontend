@@ -4,13 +4,8 @@
     <GridDotBackground />
     <div>
       <Navbar/>
-
-      <p style="margin-top: 50px; text-align: left; ">
-        <Hello/>
-      </p>
-      <p>
-        <card/>        
-      </p>
+      <div class="-mt-0"><card/> </div>       
+    
       
       
       
@@ -87,7 +82,7 @@
 // Import the GridDotBackground component
 import GridDotBackground  from './components/GridDotBackground.vue';
 import Navbar from './components/Navbar.vue';
-import Hello from './components/Hello.vue';
+
 import card from './components/card.vue';
 
 const name = 'NETHMAL RAVIHANSA GUNAWARDHANA';
