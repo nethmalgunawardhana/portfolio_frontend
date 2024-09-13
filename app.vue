@@ -1,72 +1,94 @@
 <template>
   <div>
-   <h1>{{ name }}</h1>
-   <div v-if="pending">Loading... </div>
-   <h1>Projects examples</h1>
-   <ul>
-    <li v-for="project in projects" :key="project.name">
+    <!-- GridDotBackground will be rendered behind everything else -->
+    <GridDotBackground />
+    <div>
+      <Navbar/>
 
-      <h2> {{ project.name}} </h2>
-      <p>{{ project._id}}</p>
-      <p>{{ project.description }}</p>
-    </li>
-   </ul>
-  </div>
-  <div>
-    <h1>Blogs example</h1>
-    <ul>
-      <li v-for="blog in blogs" :key="blog.title">
-        <h2>{{ blog.title }}</h2>
-        <p>{{ blog.content }}</p>
-      </li>
-    </ul>
-  </div>
-  <div>
-<h1 id="header"><u>Create a New Project</u></h1>
-<form @submit.prevent="createProject">
-<div>
-  <label for="name">Project Names:</label>
-  <input type="text" v-model="newProject.name" id="name" required/>
-</div>
-<div>
-  <label for="description">Description:</label>
-  <textarea  v-model="newProject.description" id="description" required></textarea>
-</div>
+      <p style="margin-top: 50px; text-align: left; ">
+        <Hello/>
+      </p>
+      <p>
+        <card/>        
+      </p>
+      
+      
+      
+    
+    <div style="color: white;">
+      <h1>{{ name }}</h1>
+      <div v-if="pending">Loading... </div>
+      <h1>Projects examples</h1>
+      <ul>
+        <li v-for="project in projects" :key="project.name">
+          <h2>{{ project.name }}</h2>
+          <p>{{ project._id }}</p>
+          <p>{{ project.description }}</p>
+        </li>
+      </ul>
+    </div>
+    
+    <div style="color: white;">
+      <h1>Blogs example</h1>
+      <ul>
+        <li v-for="blog in blogs" :key="blog.title">
+          <h2>{{ blog.title }}</h2>
+          <p>{{ blog.content }}</p>
+        </li>
+      </ul>
+    </div>
 
-<button type="submit">Create Project</button>
+    <!-- Forms for creating, updating, and deleting projects -->
+    <div>
+      <h1 id="header"><u>Create a New Project</u></h1>
+      <form @submit.prevent="createProject">
+        <div>
+          <label for="name">Project Names:</label>
+          <input type="text" v-model="newProject.name" id="name" required />
+        </div>
+        <div>
+          <label for="description">Description:</label>
+          <textarea v-model="newProject.description" id="description" required></textarea>
+        </div>
+        <button type="submit">Create Project</button>
+      </form>
 
-</form>
-<h1 id="header"><u> Update a Project</u></h1>
-<form @submit.prevent="updateProject">
-  <div>
-    <label for="update-id">Project ID:</label>
-    <input type="text" v-model="selectedProject.id" id="update-id" required/>
-  </div>
-  <div>
-    <label for="update-name">Update Project Name:</label>
-    <input type="text" v-model="selectedProject.name" id="update-name" required/>
-  </div>
-  <div>
-    <label for="update-description">Update Project Description:</label>
-    <textarea v-model="selectedProject.description" id="update-description" required></textarea>
-  </div>
-  <button type="submit">Update Project</button>
-</form>
-<h1 id="header"><u>Delete a Project</u></h1>
-<form @submit.prevent="deleteProject">
-  <div>
-    <label for="delete-id">Project ID:</label>
-    <input type="text" v-model="deleteProjectId" id="delete-id" required/>
-  </div>
-  <button type="submit">Delete Project</button>
-</form>
+      <h1 id="header"><u>Update a Project</u></h1>
+      <form @submit.prevent="updateProject">
+        <div>
+          <label for="update-id">Project ID:</label>
+          <input type="text" v-model="selectedProject.id" id="update-id" required />
+        </div>
+        <div>
+          <label for="update-name">Update Project Name:</label>
+          <input type="text" v-model="selectedProject.name" id="update-name" required />
+        </div>
+        <div>
+          <label for="update-description">Update Project Description:</label>
+          <textarea v-model="selectedProject.description" id="update-description" required></textarea>
+        </div>
+        <button type="submit">Update Project</button>
+      </form>
 
-
-</div>
+      <h1 id="header"><u>Delete a Project</u></h1>
+      <form @submit.prevent="deleteProject">
+        <div>
+          <label for="delete-id">Project ID:</label>
+          <input type="text" v-model="deleteProjectId" id="delete-id" required />
+        </div>
+        <button type="submit">Delete Project</button>
+      </form>
+    </div>
+  </div>
+  </div>
 </template>
 
-
 <script setup>
+// Import the GridDotBackground component
+import GridDotBackground  from './components/GridDotBackground.vue';
+import Navbar from './components/Navbar.vue';
+import Hello from './components/Hello.vue';
+import card from './components/card.vue';
 
 const name = 'NETHMAL RAVIHANSA GUNAWARDHANA';
 const { data: projects, pending, error } = useFetch('http://localhost:5000/projects');
@@ -100,9 +122,8 @@ const createProject = async () => {
     }
 
     const result = await response.json();
-    projects.value.push(result);//add new project to the last
+    projects.value.push(result);
 
-    //clear the form
     newProject.value.name = '';
     newProject.value.description = '';
   } catch (error) {
@@ -124,16 +145,8 @@ const updateProject = async () => {
       throw new Error('Failed to update project');
     }
 
-    const responseText = await response.text();
-    console.log("Raw Response:", responseText);
-
-    // Try parsing the JSON response
-    const data = JSON.parse(responseText);
-
-    // find the project in the projects array and update it
-    const index = projects.value.findIndex(
-      (project) => project._id === data._id
-    );
+    const data = await response.json();
+    const index = projects.value.findIndex(project => project._id === data._id);
     projects.value[index] = data;
 
     selectedProject.value.id = '';
@@ -154,27 +167,22 @@ const deleteProject = async () => {
       throw new Error('Failed to delete project');
     }
 
-    const responseText = await response.text();
-    console.log("Raw Response:", responseText);
-
-    // Try parsing the JSON response
-    const data = JSON.parse(responseText);
-
-    // remove the project from the projects array
-    const index = projects.value.findIndex(
-      (project) => project._id === data._id
-    );
+    const data = await response.json();
+    const index = projects.value.findIndex(project => project._id === data._id);
     projects.value.splice(index, 1);
-      // clear the deleteId object
-      deleteId.value = "";
+
+    deleteProjectId.value = '';
   } catch (error) {
     console.error('Error:', error);
   }
 };
 </script>
 
-
-<style>
+<style scoped>
+/* Same styles from your original CSS */
+#text {
+  color: white;
+}
 form {
   margin-bottom: 30px;
   margin-left: auto;
@@ -222,7 +230,4 @@ button[type="submit"]:hover {
 #header {
   text-align: center;
 }
-
 </style>
-
-

@@ -10,8 +10,15 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "flowbite": "^2.5.1",
     "nuxt": "^3.11.2",
+    "tailwind": "^4.0.0",
+    "typed.js": "^2.1.0",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue-typed-js": "^0.1.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.1"
   }
 }
