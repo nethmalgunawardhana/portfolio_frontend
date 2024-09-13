@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- GridDotBackground will be rendered behind everything else -->
+    
     <GridDotBackground />
     <div>
       <Navbar/>

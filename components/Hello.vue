@@ -1,5 +1,5 @@
 <template>
-  <div class="typed-output text-blue-500">
+  <div class="typed-output text-blue-500 lg:text-5xl" >
     <span ref="typedElement"> </span>
   </div>
 </template>
@@ -25,7 +25,7 @@ onMounted(() => {
 
 <style >
 .typed-output {
-  font-size: 50px;
+  
   font-weight: bold;
   color: rgb(22, 94, 239);
   
