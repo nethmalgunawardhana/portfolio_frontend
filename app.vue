@@ -6,7 +6,19 @@
       <Navbar/>
       <div class="-mt-0"><card/> </div>       
     
-      
+      <div>
+          <Aboutme/>
+      </div>
+      <div>
+        <Skill/>
+      </div>
+      <div>
+        <ProjectCarousel/>
+      </div>
+
+      <div>
+      <Contact/>
+      </div>
       
       
     
@@ -82,8 +94,11 @@
 // Import the GridDotBackground component
 import GridDotBackground  from './components/GridDotBackground.vue';
 import Navbar from './components/Navbar.vue';
-
+import Aboutme from './components/Aboutme.vue';
 import card from './components/card.vue';
+import Skill from './components/Skillsection.vue';
+import ProjectCarousel from './components/ProjectCarousel.vue';
+import Contact from './components/contact.vue';
 
 const name = 'NETHMAL RAVIHANSA GUNAWARDHANA';
 const { data: projects, pending, error } = useFetch('http://localhost:5000/projects');

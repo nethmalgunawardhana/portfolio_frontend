@@ -10,6 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "flowbite": "^2.5.1",
     "nuxt": "^3.11.2",
     "tailwind": "^4.0.0",
@@ -19,6 +22,7 @@
     "vue-typed-js": "^0.1.2"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.12.1"
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@types/aos": "^3.0.7"
   }
 }
