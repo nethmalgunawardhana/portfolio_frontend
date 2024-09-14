@@ -31,14 +31,14 @@
     </div>
   </div>
   <div>
-  <bar/>
+  <AnimatedCounter/>
   </div>
 </template>
 
 <script setup>
 import Hello from './Hello.vue';
 import SocialIcon from './SocialIcon.vue';
-import bar from './bar.vue'
+import AnimatedCounter from './bar.vue'
 </script>
 
 <style scoped>

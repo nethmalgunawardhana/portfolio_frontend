@@ -3,7 +3,9 @@
       <div class="w-full max-w-5xl flex flex-col md:flex-row justify-between gap-8 p-4">
         
         <!-- Left Side -->
-        <div class="space-y-4">
+        <div class="space-y-4" data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine" >
           <h2 class="text-4xl font-bold text-blue-400">Let's Connect</h2>
           <p>Don't hesitate to send me a message or an e-mail. I will get back to you as fast as I can.</p>
   
@@ -29,22 +31,24 @@
         </div>
   
         <!-- Right Side -->
-        <div class="space-y-6 w-full md:w-1/2">
+        <div class="space-y-6 w-full md:w-1/2"data-aos="fade-left"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine" >
           <h2 class="text-4xl font-bold text-blue-400">Contact <span class="text-white">me</span></h2>
           <form class="space-y-4">
-            <div>
+            <div >
               <label for="email" class="block text-sm font-medium text-gray-300">Your email</label>
               <input type="email" id="email" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white" placeholder="john@example.com" />
             </div>
-            <div>
+            <div >
               <label for="subject" class="block text-sm font-medium text-gray-300">Subject</label>
               <input type="text" id="subject" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white" placeholder="Subject of your message" />
             </div>
-            <div>
+            <div >
               <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
               <textarea id="message" rows="4" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white" placeholder="Let's talk about..."></textarea>
             </div>
-            <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Send Message</button>
+            <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600" >Send Message</button>
           </form>
         </div>
       </div>
@@ -52,10 +56,20 @@
   </template>
   
   <script setup>
-  // Add form handling logic here
+  import { onMounted } from 'vue'
+  import AOS from 'aos'
+  import 'aos/dist/aos.css'
+  
+  onMounted(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: false,
+      offset: 50,
+    })
+  })
   </script>
   
   <style scoped>
   /* You can add additional styling here if necessary */
   </style>
-  
