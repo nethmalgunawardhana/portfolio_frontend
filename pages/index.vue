@@ -35,7 +35,7 @@
 
 <script setup>
 // Import the GridDotBackground component
-import GridDotBackground from '~/components/GridDotBackground.vue';
+
 import Navbar from '~/components/Navbar.vue';
 import Aboutme from '~/components/Aboutme.vue';
 import Card from '~/components/card.vue';
