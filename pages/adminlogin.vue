@@ -52,13 +52,18 @@
   
   <script setup>
   import { ref } from 'vue'
+  import { useRouter } from 'nuxt/app' // Nuxt 3's router
   
   const username = ref('')
   const password = ref('')
   const rememberMe = ref(false)
+  const router = useRouter()
   
   const handleSubmit = () => {
-    // Handle form submission
+    // You can add authentication logic here
     console.log('Form submitted', { username: username.value, password: password.value, rememberMe: rememberMe.value })
+  
+    // Navigate to AdminDashboard after login
+    router.push('/admindashboard')
   }
   </script>
