@@ -60,10 +60,10 @@ const rememberMe = ref(false)
 const router = useRouter()
 
 const handleSubmit = () => {
-  // You can add authentication logic here
+ 
   console.log('Form submitted', { username: username.value, password: password.value, rememberMe: rememberMe.value })
 
-  // Navigate to AdminDashboard after login
+  
   router.push('/admindashboard')
 }
 </script>
