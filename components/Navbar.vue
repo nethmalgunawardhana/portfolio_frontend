@@ -1,9 +1,9 @@
 <template>
- <nav :class="['bg-gray-900 text-white sticky top-0 z-50 transition-all duration-300', { 'border-b-2 border-blue-600': isScrolled }]"> 
+  <nav :class="['bg-gray-900 text-white sticky top-0 z-50 transition-all duration-300', { 'border-b-2 border-blue-600': isScrolled }]">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <NuxtLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <span class="self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span>
-      </a>
+      </NuxtLink>
       <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <div class="relative">
           <button
@@ -14,7 +14,6 @@
             :aria-expanded="isUserMenuOpen"
           >
             <span class="sr-only">Open user menu</span>
-            <!-- Added green frame around profile icon -->
             <div class="w-10 h-10 rounded-full border-2 border-green-500 flex items-center justify-center overflow-hidden">
               <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
@@ -31,12 +30,12 @@
             </div>
             <ul>
               <li v-for="item in userMenuItems" :key="item.text">
-                <a
-                  :href="item.href"
+                <NuxtLink
+                  :to="item.href"
                   class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700"
                 >
                   {{ item.text }}
-                </a>
+                </NuxtLink>
               </li>
             </ul>
           </div>
@@ -57,8 +56,8 @@
       <div :class="{ 'hidden': !isMobileMenuOpen }" class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-user">
         <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
           <li v-for="(item, index) in navItems" :key="index">
-            <a
-              :href="item.href"
+            <NuxtLink
+              :to="item.href"
               :class="[
                 'block py-2 px-3 rounded md:p-0',
                 item.isActive 
@@ -68,7 +67,7 @@
               :aria-current="item.isActive ? 'page' : undefined"
             >
               {{ item.text }}
-            </a>
+            </NuxtLink>
           </li>
         </ul>
       </div>
@@ -84,7 +83,7 @@ export default {
       isMobileMenuOpen: false,
       isScrolled: false,
       userMenuItems: [
-        { text: 'Dashboard', href: '#' },
+        { text: 'Dashboard', href: '/adminlogin' },
         { text: 'Settings', href: '#' },
         { text: 'Earnings', href: '#' },
         { text: 'Sign out', href: '#' }
