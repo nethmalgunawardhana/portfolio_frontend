@@ -2,7 +2,7 @@
   <nav :class="['bg-gray-900 text-white sticky top-0 z-50 transition-all duration-300', { 'border-b-2 border-blue-600': isScrolled }]">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <NuxtLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap">portfolio</span>
       </NuxtLink>
       <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <div class="relative">
@@ -25,8 +25,8 @@
           </button>
           <div v-if="isUserMenuOpen" class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md overflow-hidden shadow-xl z-10">
             <div class="px-4 py-3">
-              <span class="block text-sm">Bonnie Green</span>
-              <span class="block text-sm text-gray-400 truncate">name@flowbite.com</span>
+              <span class="block text-sm">Nethmal Gunawardhana</span>
+              <span class="block text-sm text-gray-400 truncate">nethmalgunawardhana@gmail.com</span>
             </div>
             <ul>
               <li v-for="item in userMenuItems" :key="item.text">
@@ -83,16 +83,15 @@ export default {
       isMobileMenuOpen: false,
       isScrolled: false,
       userMenuItems: [
-        { text: 'Dashboard', href: '/adminlogin' },
-        { text: 'Settings', href: '#' },
-        { text: 'Earnings', href: '#' },
-        { text: 'Sign out', href: '#' }
+        { text: 'Dashboard', href: '/adminlogin' }
+       
       ],
       navItems: [
         { text: 'Home', href: '#', isActive: true },
         { text: 'About', href: '#', isActive: false },
-        { text: 'Services', href: '#', isActive: false },
-        { text: 'Pricing', href: '#', isActive: false },
+        { text: 'Skills', href: '#', isActive: false },
+        { text: 'Projects', href: '#', isActive: false },
+        { text: 'Blogs', href: '#', isActive: false },
         { text: 'Contact', href: '#', isActive: false }
       ]
     }

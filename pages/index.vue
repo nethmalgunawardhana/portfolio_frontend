@@ -1,96 +1,95 @@
 <template>
-  
+  <div>
+    <Navbar/>
+    <NuxtPage />
+    <div class="-mt-0"><card/></div>       
     
-
     <div>
-      <Navbar/>
-      <NuxtPage />
-      <div class="-mt-0"><card/> </div>       
-    
-      <div>
-          <Aboutme/>
-      </div>
-      <div>
-        <Skill/>
-      </div>
-      <div>
-        <ProjectCarousel/>
-      </div>
-
-      <div>
+      <Aboutme/>
+    </div>
+    <div>
+      <Skill/>
+    </div>
+    <div>
+      <ProjectCarousel/>
+    </div>
+    <div>
+      <bloglist/>
+    </div>
+    <div>
       <Contact/>
-      </div>
-      <button
+    </div>
+    <button
       v-show="showBackToTop"
       class="back-to-top"
       @click="scrollToTop"
+      aria-label="Back to top"
     >
-      ⬆️ Back to Top
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+        <path d="M12 4l8 8h-6v8h-4v-8H4z" />
+      </svg>
     </button>
-      
-    
-    </div>
-  
+  </div>
 </template>
 
 <script setup>
-// Import the GridDotBackground component
+import { ref, onMounted, onUnmounted } from 'vue'
+import Navbar from '~/components/Navbar.vue'
+import Aboutme from '~/components/Aboutme.vue'
+import Card from '~/components/card.vue'
+import Skill from '~/components/Skillsection.vue'
+import ProjectCarousel from '~/components/ProjectCarousel.vue'
+import Contact from '~/components/contact.vue'
+import bloglist from '~/components/bloglist.vue'
 
-import Navbar from '~/components/Navbar.vue';
-import Aboutme from '~/components/Aboutme.vue';
-import Card from '~/components/card.vue';
-import Skill from '~/components/Skillsection.vue';
-import ProjectCarousel from '~/components/ProjectCarousel.vue';
-import Contact from '~/components/contact.vue';
-
-
-const showBackToTop = ref(false);
+const showBackToTop = ref(false)
 
 const handleScroll = () => {
-  showBackToTop.value = window.scrollY > 200;  // Show button after scrolling down 200px
-};
+  showBackToTop.value = window.scrollY > 200
+}
 
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth',  // Smooth scroll to top
-  });
-};
+    behavior: 'smooth'
+  })
+}
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-});
+  window.addEventListener('scroll', handleScroll)
+})
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-});
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped>
-/* Same styles from your original CSS */
-
 .back-to-top {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
-  padding: 10px 15px;
-  background-color: #4CAF50;
-  color: white;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #4ade80, #3b82f6);
   border: none;
-  border-radius: 5px;
-  font-size: 18px;
   cursor: pointer;
-  display: none;
-  z-index: 1000;
-  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .back-to-top:hover {
-  background-color: #45a049;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.back-to-top[style*="display: block;"] {
-  opacity: 1;
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
 }
-
 </style>

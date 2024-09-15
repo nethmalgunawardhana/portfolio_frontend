@@ -27,7 +27,7 @@ onMounted(() => {
 .typed-output {
   
   font-weight: bold;
-  color: rgb(22, 94, 239);
+ 
   
 }
 </style>

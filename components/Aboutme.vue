@@ -2,7 +2,7 @@
   <section class="bg-gray-900 text-white py-12">
     <div class="container mx-auto flex flex-col lg:flex-row items-center">
       <!-- Left Column: Image -->
-      <div class="lg:w-1/3 lg:mr-8 ml-20 mb-8 lg:mb-0">
+      <div class="lg:w-1/3 lg:mr-8 ml-18 mb-8 lg:mb-0">
         <div class="image-frame" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2500">
           <img
             src="https://via.placeholder.com/400x400"
@@ -35,7 +35,7 @@
         <!-- Animated Button -->
         <a
           href="#contact"
-          class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+          class="inline-block bg-gradient-to-b from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
           data-aos="zoom-in" data-aos-delay="200"
         >
           Let's Connect
@@ -73,7 +73,7 @@ onUnmounted(() => {
   margin: 0 auto;
   border-radius: 50%;
   padding: 10px;
-  background: linear-gradient(45deg, #3490dc, #6574cd);
+  background: linear-gradient(45deg, #3490dc, #65f399);
 
 }
 

@@ -24,7 +24,7 @@
                   cy="60"
                 />
                 <circle
-                  class="text-blue-400 transition-all duration-1000 ease-out"
+                  class="text-blue-400 transition-all duration-1000 ease-out"    
                   stroke-width="8"
                   :stroke-dasharray="circumference"
                   :stroke-dashoffset="getStrokeDashoffset(skill.percentage)"
@@ -79,15 +79,15 @@
   import typesenseIcon from './assets/icons/typescript.png'
   
   const skills = ref([
-    { name: 'Nuxt.JS', percentage: 80, icon: nuxtIcon, category: 'Front-End Development', isHovered: false },
+    { name: 'Angular.JS', percentage: 80, icon: nuxtIcon, category: 'Front-End Development', isHovered: false },
     { name: 'React.js', percentage: 80, icon: reactIcon, category: 'Front-End Development', isHovered: false },
     { name: 'Tailwind CSS', percentage: 80, icon: tailwindIcon, category: 'Front-End Development', isHovered: false },
-    { name: 'Flutter', percentage: 80, icon: flutterIcon, category: 'Front-End Development', isHovered: false },
-    { name: 'Astro.js', percentage: 60, icon: astroIcon, category: 'Front-End Development', isHovered: false },
+    { name: 'Figma', percentage: 80, icon: flutterIcon, category: 'Front-End Development', isHovered: false },
+    { name: 'Php', percentage: 60, icon: astroIcon, category: 'Front-End Development', isHovered: false },
     { name: 'HTML5', percentage: 80, icon: htmlIcon, category: 'Front-End Development', isHovered: false },
-    { name: 'Next.js', percentage: 80, icon: nextIcon, category: 'Front-End Development', isHovered: false },
-    { name: 'Angular', percentage: 80, icon: angularIcon, category: 'Front-End Development', isHovered: false },
-    { name: 'CSS3', percentage: 80, icon: css3Icon, category: 'Front-End Development', isHovered: false },
+    { name: 'Css', percentage: 80, icon: nextIcon, category: 'Front-End Development', isHovered: false },
+    { name: 'Node.js', percentage: 80, icon: angularIcon, category: 'Front-End Development', isHovered: false },
+    { name: 'Python', percentage: 80, icon: css3Icon, category: 'Front-End Development', isHovered: false },
     { name: 'Fast API', percentage: 80, icon: fastApiIcon, category: 'Back-End Development', isHovered: false },
     { name: 'Nest.JS', percentage: 80, icon: nestIcon, category: 'Back-End Development', isHovered: false },
     { name: 'Node.js', percentage: 80, icon: nodeIcon, category: 'Back-End Development', isHovered: false },

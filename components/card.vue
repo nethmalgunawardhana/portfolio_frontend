@@ -13,7 +13,7 @@
           <p class="mb-6 text-gray-300">
             Passionate about creating beautiful and functional designs. Let's bring your ideas to life!
           </p>
-          <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg mb-6">
+          <button class="bg-gradient-to-b from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg mb-6">
             GET IN TOUCH
           </button>
           
@@ -42,7 +42,6 @@ import AnimatedCounter from './bar.vue'
 </script>
 
 <style scoped>
-
 .bg-navy-900 {
   background-color: #171f30;
 }
@@ -51,9 +50,7 @@ import AnimatedCounter from './bar.vue'
   color: #3182ce;
 }
 
-
 .example-class {
   property: value;
 }
-
 </style>

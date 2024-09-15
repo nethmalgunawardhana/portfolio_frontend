@@ -48,7 +48,7 @@
               <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
               <textarea id="message" rows="4" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white" placeholder="Let's talk about..."></textarea>
             </div>
-            <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600" >Send Message</button>
+            <button type="submit" class="w-full py-2 px-4 bg-gradient-to-b from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-lg" >Send Message</button>
           </form>
         </div>
       </div>
