@@ -38,7 +38,10 @@
   import UpdateProjectForm from '~/components/updateprojectform.vue'
   import DeleteProjectForm from '~/components/deleteprojectform.vue'
   import Projects from '~/components/ProjectCarousel.vue'
-  // Import other content components as needed
+  import CreateBlogForm from '~/components/Createblogform.vue'
+  import UpdateBlogForm from '~/components/updateblogform.vue'
+  import DeleteBlogForm from '~/components/Deleteblogform.vue'
+
   
   const router = useRouter()
   
@@ -49,6 +52,9 @@
     { name: 'Create Project', content: 'create', icon: PlusIcon },
     { name: 'Update Project', content: 'update', icon: PencilIcon },
     { name: 'Delete Project', content: 'delete', icon: TrashIcon },
+    { name: 'Create Blog', content: 'Bcreate', icon: PlusIcon },
+    { name: 'Update Blog', content: 'Bupdate', icon: PencilIcon },
+    { name: 'Delete Blog', content: 'Bdelete', icon: TrashIcon },
   ]
   
   const activeContent = ref('home')
@@ -77,7 +83,15 @@
       case 'delete':
         activeComponent.value = DeleteProjectForm
         break
-      // Add other cases for different content components
+      case 'Bcreate':
+        activeComponent.value = CreateBlogForm
+        break
+      case 'Bupdate':
+        activeComponent.value = UpdateBlogForm
+        break  
+      case 'Bdelete':
+        activeComponent.value = DeleteBlogForm
+        break
       default:
         activeComponent.value = null
     }
