@@ -38,6 +38,7 @@
   import UpdateProjectForm from '~/components/updateprojectform.vue'
   import DeleteProjectForm from '~/components/deleteprojectform.vue'
   import Projects from '~/components/ProjectCarousel.vue'
+  import Bloglist from '~/components/bloglist.vue'
   import CreateBlogForm from '~/components/Createblogform.vue'
   import UpdateBlogForm from '~/components/updateblogform.vue'
   import DeleteBlogForm from '~/components/Deleteblogform.vue'
@@ -74,6 +75,9 @@
       case 'projects':
         activeComponent.value = Projects
         break
+        case 'blogs':
+        activeComponent.value = Bloglist
+        break  
       case 'create':
         activeComponent.value = CreateProjectForm
         break

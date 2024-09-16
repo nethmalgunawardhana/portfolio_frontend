@@ -1,6 +1,6 @@
 <!-- UpdateProjectForm.vue -->
 <template>
-    <div class="max-w-2xl mx-auto">
+    <div class="max-w-2xl mx-auto mt-8 p-6 bg-gray-800 rounded-lg shadow-xl">
       <h2 class="text-2xl font-bold mb-4">Update Project</h2>
       <form @submit.prevent="updateProject" class="space-y-4">
         <div>
