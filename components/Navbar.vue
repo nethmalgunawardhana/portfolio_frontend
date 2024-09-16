@@ -1,7 +1,7 @@
 <template>
   <nav :class="['bg-gray-900 text-white sticky top-0 z-50 transition-all duration-300', { 'border-b-2 border-blue-600': isScrolled }]">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <NuxtLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <NuxtLink to="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
         <span class="self-center text-2xl font-semibold whitespace-nowrap">portfolio</span>
       </NuxtLink>
       <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -87,12 +87,12 @@ export default {
        
       ],
       navItems: [
-        { text: 'Home', href: '#', isActive: true },
-        { text: 'About', href: '#', isActive: false },
-        { text: 'Skills', href: '#', isActive: false },
-        { text: 'Projects', href: '#', isActive: false },
-        { text: 'Blogs', href: '#', isActive: false },
-        { text: 'Contact', href: '#', isActive: false }
+        { text: 'Home', href: '#home', isActive: true },
+        { text: 'About', href: '#about', isActive: false },
+        { text: 'Skills', href: '#skills', isActive: false },
+        { text: 'Projects', href: '#projects', isActive: false },
+        { text: 'Blogs', href: '#blogs', isActive: false },
+        { text: 'Contact', href: '#contact', isActive: false }
       ]
     }
   },

@@ -1,22 +1,22 @@
 <template>
-  <div>
+  <div id="home">
     <Navbar/>
-    <NuxtPage />
-    <div class="-mt-0"><card/></div>       
+   
+    <div class="-mt-0" ><card/></div>       
     
-    <div>
+    <div id="about">
       <Aboutme/>
     </div>
-    <div>
+    <div id="skills">
       <Skill/>
     </div>
-    <div>
+    <div id="projects">
       <ProjectCarousel/>
     </div>
-    <div>
+    <div id="blogs">
       <bloglist/>
     </div>
-    <div>
+    <div id="contact">
       <Contact/>
     </div>
     <button

@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-900 text-white py-12">
+  <section class="bg-gray-900 text-white py-20">
     <div class="container mx-auto flex flex-col lg:flex-row items-center">
       <!-- Left Column: Image -->
       <div class="lg:w-1/3 lg:mr-8 ml-18 mb-8 lg:mb-0">
