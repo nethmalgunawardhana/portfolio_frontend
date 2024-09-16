@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
     "@tailwindcss/typography": "^0.5.15",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",

@@ -1,0 +1,79 @@
+<!-- CreateProjectForm.vue -->
+<template>
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl font-bold mb-4">Create a New Project</h2>
+      <form @submit.prevent="createProject" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Project Name</label>
+          <input type="text" id="name" v-model="newProject.name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+        </div>
+        <div>
+          <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+          <textarea id="description" v-model="newProject.description" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+        </div>
+        <div>
+          <label for="github" class="block text-sm font-medium text-gray-700">GitHub URL</label>
+          <input type="url" id="github" v-model="newProject.github" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+        </div>
+        <div>
+          <label for="demo" class="block text-sm font-medium text-gray-700">Demo URL</label>
+          <input type="url" id="demo" v-model="newProject.demo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+        </div>
+        <div>
+          <label for="image" class="block text-sm font-medium text-gray-700">Project Image</label>
+          <input type="file" id="image" @change="handleImageUpload" accept="image/*" required class="mt-1 block w-full">
+        </div>
+        <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Create Project
+        </button>
+      </form>
+    </div>
+  </template>
+  
+  <script setup>
+  import { ref } from 'vue'
+  
+  const newProject = ref({
+    name: '',
+    description: '',
+    github: '',
+    demo: '',
+    image: null
+  })
+  
+  const handleImageUpload = (event) => {
+    newProject.value.image = event.target.files[0]
+  }
+  
+  const createProject = async () => {
+    try {
+      const formData = new FormData()
+      formData.append('name', newProject.value.name)
+      formData.append('description', newProject.value.description)
+      formData.append('github', newProject.value.github)
+      formData.append('demo', newProject.value.demo)
+      formData.append('image', newProject.value.image)
+  
+      // Replace with your actual API endpoint
+      const response = await fetch('http://localhost:5000/projects', {
+        method: 'POST',
+        body: formData,
+      })
+  
+      if (!response.ok) {
+        throw new Error('Failed to create project')
+      }
+  
+      const result = await response.json()
+      console.log('Project created:', result)
+  
+      // Reset form
+      newProject.value = { name: '', description: '', github: '', demo: '', image: null }
+  
+      // You might want to show a success message or redirect the user
+    } catch (error) {
+      console.error('Error:', error)
+      // Handle the error (e.g., show an error message to the user)
+    }
+  }
+  </script>

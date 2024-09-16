@@ -16,9 +16,9 @@
             @mouseleave="project.isHovered = false"
           >
             <img 
-              :src="project.image ? `http://localhost:5000${project.image}` : ''"
+              :src="project.imageUrl"
               :alt="project.name" 
-              class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+              class="h-80 w-full object-cover transition-transform duration-300 group-hover:scale-110"
             />
             <div 
               class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100"
@@ -59,13 +59,26 @@ const fetchProjects = async () => {
     const response = await axios.get('http://localhost:5000/projects')
     projects.value = response.data.map(project => ({
       ...project,
-      isHovered: false
+      isHovered: false,
+      imageUrl: project.image && project.image.data
+        ? `data:${project.image.contentType};base64,${arrayBufferToBase64(project.image.data.data)}`
+        : ''
     }))
     loading.value = false
   } catch (err) {
     error.value = 'Failed to load projects. Please try again later.'
     loading.value = false
   }
+}
+
+const arrayBufferToBase64 = (buffer) => {
+  let binary = '';
+  const bytes = new Uint8Array(buffer);
+  const len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return window.btoa(binary);
 }
 
 onMounted(fetchProjects)
@@ -77,12 +90,12 @@ onMounted(fetchProjects)
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   gap: 16px;
-  scrollbar-width: none;  /* Firefox */
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  
+  -ms-overflow-style: none; 
 }
 
 .carousel::-webkit-scrollbar { 
-  display: none;  /* WebKit */
+  display: none;  
 }
 
 .carousel-item {

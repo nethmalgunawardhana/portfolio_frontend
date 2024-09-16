@@ -64,6 +64,6 @@ const handleSubmit = () => {
   console.log('Form submitted', { username: username.value, password: password.value, rememberMe: rememberMe.value })
 
   
-  router.push('/admindashboard')
+  router.push('/dashboard')
 }
 </script>
