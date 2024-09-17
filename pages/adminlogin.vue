@@ -52,18 +52,41 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'nuxt/app' 
+import { useRouter } from 'nuxt/app'
+import Swal from 'sweetalert2'
 
 const username = ref('')
 const password = ref('')
 const rememberMe = ref(false)
 const router = useRouter()
 
-const handleSubmit = () => {
- 
-  console.log('Form submitted', { username: username.value, password: password.value, rememberMe: rememberMe.value })
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
 
-  
-  router.push('/dashboard')
+const handleSubmit = async () => {
+  if (username.value === 'nethmal' && password.value === 'nethmal2002') {
+    Toast.fire({
+      icon: "success",
+      title: "Signed in successfully"
+    });
+
+    setTimeout(() => {
+      router.push('/dashboard')
+    }, 3000);
+  } else {
+    Toast.fire({
+      icon: "error",
+      title: "Invalid username or password"
+    });
+  }
 }
 </script>
