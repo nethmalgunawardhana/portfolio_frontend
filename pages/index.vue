@@ -1,8 +1,8 @@
 <template>
-  <div id="home">
+  <div id="home" class="bg-gray-900 overflow-x-hidden">
     <Navbar/>
    
-    <div class="-mt-0" ><card/></div>       
+    <div><card/></div>       
     
     <div id="about">
       <Aboutme/>
@@ -81,6 +81,7 @@ onUnmounted(() => {
   color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 .back-to-top:hover {
@@ -91,5 +92,11 @@ onUnmounted(() => {
 .back-to-top svg {
   width: 24px;
   height: 24px;
+}
+
+/* Add this to ensure full-width on mobile */
+#home {
+  width: 100vw;
+  max-width: 100%;
 }
 </style>
