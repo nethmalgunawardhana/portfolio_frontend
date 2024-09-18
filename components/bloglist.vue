@@ -45,11 +45,12 @@ import axios from 'axios'
 const posts = ref([])
 const loading = ref(true)
 const error = ref(null)
+const config = useRuntimeConfig()
 
 // Fetch blog posts
 const fetchBlogPosts = async () => {
   try {
-    const response = await axios.get('http://localhost:5000/blogs')
+    const response = await axios.get(`${config.public.apiBase}/blogs`)
     posts.value = response.data.map(post => ({
       ...post,
       imageUrl: post.image && post.image.data
@@ -92,7 +93,7 @@ onMounted(fetchBlogPosts)
 }
 
 .carousel-item {
-  flex: 0 0 300px;
+  flex: 0 0 310px;
   scroll-snap-align: center;
 }
 
@@ -100,7 +101,9 @@ onMounted(fetchBlogPosts)
   border-radius: 0.5rem;
 }
 
+
 #blogs {
-  scroll-margin-top: 80px;
+  padding-top: 80px;
+  margin-top: -80px;
 }
 </style>

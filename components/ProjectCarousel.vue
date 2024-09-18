@@ -1,7 +1,7 @@
 <template>
   <section id="projects" class="py-16 bg-gray-900 ">
     <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-white mb-12 text-center">My Projects</h2>
+      <h2 class="text-4xl font-bold text-white  text-center">My Projects</h2>
       <div v-if="loading" class="text-white text-center">Loading projects...</div>
       <div v-else-if="error" class="text-red-500 text-center">{{ error }}</div>
       <div v-else class="carousel">
@@ -53,10 +53,10 @@ import axios from 'axios'
 const projects = ref([])
 const loading = ref(true)
 const error = ref(null)
-
+const config = useRuntimeConfig()
 const fetchProjects = async () => {
   try {
-    const response = await axios.get('http://localhost:5000/projects')
+    const response = await axios.get(`${config.public.apiBase}/projects`)
     projects.value = response.data.map(project => ({
       ...project,
       isHovered: false,

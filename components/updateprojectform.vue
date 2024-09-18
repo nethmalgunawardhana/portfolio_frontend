@@ -55,7 +55,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Swal from 'sweetalert2'
-
+const config = useRuntimeConfig()
 const projects = ref([])
 const selectedProject = ref({
   id: '',
@@ -68,7 +68,7 @@ const selectedProject = ref({
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:5000/projectsdelete')
+    const response = await fetch(`${config.public.apiBase}/projectsdelete`)
     projects.value = await response.json()
   } catch (error) {
     console.error('Error fetching projects:', error)
@@ -111,7 +111,7 @@ const updateProject = async () => {
       formData.append('image', selectedProject.value.image)
     }
 
-    const response = await fetch(`http://localhost:5000/projects/${selectedProject.value.id}`, {
+    const response = await fetch(`${config.public.apiBase}/projects/${selectedProject.value.id}`, {
       method: 'PATCH',
       body: formData,
     })

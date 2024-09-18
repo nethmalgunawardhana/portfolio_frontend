@@ -53,11 +53,11 @@ const blogs = ref([])
 const selectedBlogId = ref('')
 const isLoading = ref(false)
 const formContainer = ref(null)
-
+const config = useRuntimeConfig()
 const fetchBlogs = async () => {
   isLoading.value = true
   try {
-    const response = await fetch('http://localhost:5000/blogsdelete')
+    const response = await fetch(`${config.public.apiBase}/blogsdelete`)
     if (!response.ok) {
       throw new Error('Failed to fetch blog posts')
     }
@@ -92,7 +92,7 @@ const confirmDelete = () => {
 
 const deleteBlog = async () => {
   try {
-    const response = await fetch(`http://localhost:5000/blogs/${selectedBlogId.value}`, {
+    const response = await fetch(`${config.public.apiBase}/blogs/${selectedBlogId.value}`, {
       method: 'DELETE',
     })
 

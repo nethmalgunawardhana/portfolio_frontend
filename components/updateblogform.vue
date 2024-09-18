@@ -47,7 +47,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Swal from 'sweetalert2'
-
+const config = useRuntimeConfig()
 const blogs = ref([])
 const selectedBlog = ref({
   id: '',
@@ -58,7 +58,7 @@ const selectedBlog = ref({
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:5000/blogsdelete')
+    const response = await fetch(`${config.public.apiBase}/blogsdelete`)
     blogs.value = await response.json()
   } catch (error) {
     console.error('Error fetching blogs:', error)
@@ -99,7 +99,7 @@ const updateBlog = async () => {
       formData.append('image', selectedBlog.value.image)
     }
 
-    const response = await fetch(`http://localhost:5000/blogs/${selectedBlog.value.id}`, {
+    const response = await fetch(`${config.public.apiBase}/blogs/${selectedBlog.value.id}`, {
       method: 'PATCH',
       body: formData,
     })

@@ -53,11 +53,11 @@ const projects = ref([])
 const selectedProjectId = ref('')
 const isLoading = ref(false)
 const formContainer = ref(null)
-
+const config = useRuntimeConfig()
 const fetchProjects = async () => {
   isLoading.value = true
   try {
-    const response = await fetch('http://localhost:5000/projectsdelete')
+    const response = await fetch(`${config.public.apiBase}/projectsdelete`)
     if (!response.ok) {
       throw new Error('Failed to fetch projects')
     }
@@ -92,7 +92,7 @@ const confirmDelete = () => {
 
 const deleteProject = async () => {
   try {
-    const response = await fetch(`http://localhost:5000/projects/${selectedProjectId.value}`, {
+    const response = await fetch(`${config.public.apiBase}/projects/${selectedProjectId.value}`, {
       method: 'DELETE',
     })
 

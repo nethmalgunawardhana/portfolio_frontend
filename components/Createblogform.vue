@@ -28,6 +28,7 @@
   const title = ref('')
   const url = ref('')
   const image = ref(null)
+  const config = useRuntimeConfig()
   
   const handleImageUpload = (event) => {
     image.value = event.target.files[0]
@@ -42,7 +43,7 @@
         formData.append('image', image.value)
       }
   
-      const response = await axios.post('http://localhost:5000/blogs', formData, {
+      const response = await axios.post(`${config.public.apiBase}/blogs`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

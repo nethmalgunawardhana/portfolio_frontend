@@ -34,7 +34,7 @@ import { ref } from 'vue'
 import Swal from 'sweetalert2'
 
 const emit = defineEmits(['projectCreated'])
-
+const config = useRuntimeConfig()
 const newProject = ref({
   name: '',
   description: '',
@@ -67,7 +67,7 @@ const createProject = async () => {
     formData.append('image', newProject.value.image)
 
     // Replace with your actual API endpoint
-    const response = await fetch('http://localhost:5000/projects', {
+    const response = await fetch(`${config.public.apiBase}/projects`, {
       method: 'POST',
       body: formData,
     })
