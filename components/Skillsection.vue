@@ -71,7 +71,7 @@ import NuxtIcon from "./assets/icons/nuxt.png"
 
 
 // Backend Development Icons
-import nodeIcon from './assets/icons/nodejs.png'
+import nodeIcon from './assets/icons/Nodejs.png'
 import pythonIcon from './assets/icons/python.png'
 import phpIcon from './assets/icons/php.png'
 import javaIcon from './assets/icons/java.png'
