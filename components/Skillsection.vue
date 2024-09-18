@@ -64,7 +64,7 @@ import cssIcon from './assets/icons/css.png'
 import javascriptIcon from './assets/icons/js.png'
 import reactIcon from './assets/icons/react.png'
 import vueIcon from './assets/icons/vuejs.png'
-import angularIcon from './assets/icons/angular.png'
+import angularIcon from './assets/icons/Angular.png'
 import tailwindIcon from './assets/icons/tailwind.png'
 import figmaIcon from './assets/icons/figma.png'
 import NuxtIcon from "./assets/icons/nuxt.png"
