@@ -1,6 +1,6 @@
 <template>
   <div id="home" class="bg-gray-900 overflow-x-hidden">
-    <Navbar/>
+    <Navbar :class="{ 'navbar-fixed': isNavbarFixed }"/>
    
     <div><card/></div>       
     
@@ -43,9 +43,11 @@ import Contact from '~/components/contact.vue'
 import bloglist from '~/components/bloglist.vue'
 
 const showBackToTop = ref(false)
+const isNavbarFixed = ref(false)
 
 const handleScroll = () => {
   showBackToTop.value = window.scrollY > 200
+
 }
 
 const scrollToTop = () => {
@@ -99,4 +101,7 @@ onUnmounted(() => {
   width: 100vw;
   max-width: 100%;
 }
+
+/* Add these styles for the fixed navbar */
+
 </style>

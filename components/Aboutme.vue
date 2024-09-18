@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-900 text-white py-10 sm:py-20">
+  <section id="about" class="bg-gray-900 text-white py-10 mt-16 sm:py-20">
     <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center">
       <!-- Left Column: Image -->
       <div class="w-full lg:w-1/3 lg:mr-8 mb-8 lg:mb-0">
@@ -87,5 +87,11 @@ onUnmounted(() => {
     width: 320px;
     height: 320px;
   }
+}
+
+
+#about {
+  padding-top: 80px;
+  margin-top: -80px;
 }
 </style>

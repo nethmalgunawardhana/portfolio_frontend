@@ -1,6 +1,6 @@
 <template>
-  <section class="py-16 bg-gray-900">
-    <div class="container mx-auto px-4">
+  <section class="py-16 bg-gray-900 pt-28">
+    <div  id="blogs" class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-white mb-12 text-center">My Blog Posts</h2>
       <div v-if="loading" class="text-white text-center">Loading blog posts...</div>
       <div v-else-if="error" class="text-red-500 text-center">{{ error }}</div>
@@ -98,5 +98,9 @@ onMounted(fetchBlogPosts)
 
 .carousel-item img {
   border-radius: 0.5rem;
+}
+
+#blogs {
+  scroll-margin-top: 80px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-900 py-16">
+  <section  id="skills" class="bg-gray-900 py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-white mb-12 text-center" data-aos="fade-up">My Skills</h2>
       <div v-for="(skills, categoryName) in categorizedSkills" :key="categoryName" class="mb-12">
@@ -166,3 +166,11 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
 </script>
+
+<style scoped>  
+
+#skills {
+  padding-top: 80px;
+  margin-top: -80px;
+}
+</style>

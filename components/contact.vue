@@ -68,4 +68,9 @@ onMounted(() => {
 
 <style scoped>
 /* You can add additional styling here if necessary */
+
+section{
+  padding-top: 80px;
+  margin-top: -80px;
+}
 </style>

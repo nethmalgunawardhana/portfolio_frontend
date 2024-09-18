@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-navy-900 text-white min-h-screen flex items-start pt-8 sm:pt-16">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="bg-navy-900 text-white min-h-screen flex flex-col">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24">
       <div class="flex flex-col lg:flex-row items-center justify-between">
         <div class="w-full lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left">
           <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4">
@@ -22,16 +22,16 @@
           </div>
         </div>
         
-        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end lg:ml-4">
-          <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
+        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-8 lg:mt-0">
+          <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
             <img src="https://dpwalay.net/wp-content/uploads/2023/09/bad-boy-dp-for-whatsapp-11.jpg" alt="Nethmal" class="rounded-lg w-full shadow-2xl" />
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="px-4 sm:px-6 lg:px-8 py-8">
-    <AnimatedCounter />
+    <div class="px-4 sm:px-6 lg:px-8 py-8 mt-8">
+      <AnimatedCounter />
+    </div>
   </div>
 </template>
 
@@ -60,6 +60,14 @@ import AnimatedCounter from './bar.vue'
 @media (min-width: 1024px) {
   .lg\:ml-4 {
     margin-left: 1rem;
+  }
+  
+  .container > div {
+    margin-left: 4rem;
+  }
+  
+  .lg\:w-1\/2:last-child {
+    margin-right: 10rem;
   }
 }
 </style>

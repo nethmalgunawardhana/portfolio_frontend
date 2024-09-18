@@ -68,7 +68,7 @@ const selectedProject = ref({
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:5000/projects')
+    const response = await fetch('http://localhost:5000/projectsdelete')
     projects.value = await response.json()
   } catch (error) {
     console.error('Error fetching projects:', error)
@@ -127,7 +127,7 @@ const updateProject = async () => {
 
     // Reset form and refresh project list
     selectedProject.value = { id: '', name: '', description: '', github: '', demo: '', image: null }
-    const projectsResponse = await fetch('http://localhost:5000/projects')
+    const projectsResponse = await fetch('http://localhost:5000/projectsdelete')
     projects.value = await projectsResponse.json()
 
   } catch (error) {
