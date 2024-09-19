@@ -102,6 +102,6 @@ onUnmounted(() => {
   max-width: 100%;
 }
 
-/* Add these styles for the fixed navbar */
+
 
 </style>
