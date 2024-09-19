@@ -28,33 +28,39 @@
         </p>
       </div>
 
-      <!-- Right Side -->
-      <div class="space-y-6 w-full md:w-1/2" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+    <!-- Right Side -->
+    <div class="space-y-6 w-full md:w-1/2" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
         <h2 class="text-3xl md:text-4xl font-bold text-blue-400">Contact <span class="text-white">me</span></h2>
-        <form class="space-y-4">
+        <form class="space-y-4" @submit.prevent="onSubmit">
           <div>
             <label for="email" class="block text-sm font-medium text-gray-300">Your email</label>
-            <input type="email" id="email" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white text-sm md:text-base" placeholder="john@example.com" />
+            <input v-model="state.email" type="email" id="email" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white text-sm md:text-base" placeholder="john@example.com" />
           </div>
           <div>
             <label for="subject" class="block text-sm font-medium text-gray-300">Subject</label>
-            <input type="text" id="subject" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white text-sm md:text-base" placeholder="Subject of your message" />
+            <input v-model="state.subject" type="text" id="subject" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white text-sm md:text-base" placeholder="Subject of your message" />
           </div>
           <div>
             <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
-            <textarea id="message" rows="4" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white text-sm md:text-base" placeholder="Let's talk about..."></textarea>
+            <textarea v-model="state.message" id="message" rows="4" class="mt-1 w-full px-4 py-2 bg-[#161B22] border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400 text-white text-sm md:text-base" placeholder="Let's talk about..."></textarea>
           </div>
           <button type="submit" class="w-full py-2 px-4 bg-gradient-to-b from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-lg text-sm md:text-base">Send Message</button>
         </form>
+        <p v-if="result" :class="{ 'text-green-500': status === 'success', 'text-red-500': status === 'error' }">
+          {{ result }}
+        </p>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { z } from "zod";
+
+const config = useRuntimeConfig()
 
 onMounted(() => {
   AOS.init({
@@ -64,12 +70,65 @@ onMounted(() => {
     offset: 50,
   })
 })
+
+const schema = z.object({
+  email: z.string().email("Invalid email address"),
+  message: z.string().min(10, "Must be at least 10 characters"),
+  subject: z.string().min(1, "Subject required"),
+  access_key: z.string().min(1, "Access key is required"),
+});
+
+const state = reactive({
+  access_key: config.public.webFormsApiKey,
+  subject: " ",
+  email: "",
+  message: "",
+});
+
+const result = ref("");
+const status = ref("");
+
+async function onSubmit() {
+  result.value = "Please wait...";
+  try {
+    const validatedData = schema.parse(state);
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(validatedData),
+    });
+
+    const responseData = await response.json();
+    console.log(responseData);
+
+    result.value = responseData.message;
+
+    if (response.status === 200) {
+      status.value = "success";
+    } else {
+      status.value = "error";
+    }
+  } catch (error) {
+    console.error(error);
+    status.value = "error";
+    result.value = "Something went wrong!";
+  } finally {
+    // Reset form after submission
+    state.email = "";
+    state.subject = "";
+    state.message = "";
+
+    // Clear result and status after 5 seconds
+    setTimeout(() => {
+      result.value = "";
+      status.value = "";
+    }, 5000);
+  }
+}
 </script>
 
 <style scoped>
-/* You can add additional styling here if necessary */
-
-section{
+section {
   padding-top: 80px;
   margin-top: -80px;
 }
