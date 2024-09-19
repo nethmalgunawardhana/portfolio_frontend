@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.1",
-    "@types/aos": "^3.0.7"
+    "@types/aos": "^3.0.7",
+    "sass": "^1.79.1"
   }
 }

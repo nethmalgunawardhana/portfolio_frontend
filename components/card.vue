@@ -23,7 +23,7 @@
         </div>
         
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-8 lg:mt-0">
-          <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+          <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg animated-frame">
             <img src="https://dpwalay.net/wp-content/uploads/2023/09/bad-boy-dp-for-whatsapp-11.jpg" alt="Nethmal" class="rounded-lg w-full shadow-2xl" />
           </div>
         </div>
@@ -68,6 +68,45 @@ import AnimatedCounter from './bar.vue'
   
   .lg\:w-1\/2:last-child {
     margin-right: 10rem;
+  }
+}
+
+.animated-frame {
+  position: relative;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.animated-frame::before,
+.animated-frame::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent, rgba(0, 208, 255, 0.977), transparent 40%);
+  animation: rotate 2s linear infinite ;
+  border-radius: 50%;
+  
+}
+
+.animated-frame::after {
+  background: conic-gradient(transparent, rgba(0, 255, 221, 0.636), transparent 50%);
+  animation-duration: 3s;
+  animation-direction: reverse;
+ 
+}
+
+.animated-frame img {
+  position: relative;
+  z-index: 1;
+  border-radius: 8px;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
   }
 }
 </style>

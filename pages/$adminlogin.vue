@@ -80,7 +80,7 @@ const handleSubmit = async () => {
     });
 
     setTimeout(() => {
-      router.push('/dashboard')
+      router.push('/$dashboard')
     }, 3000);
   } else {
     Toast.fire({

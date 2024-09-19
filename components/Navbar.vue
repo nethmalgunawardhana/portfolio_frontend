@@ -85,7 +85,7 @@ export default {
       isMobileMenuOpen: false,
       isScrolled: false,
       userMenuItems: [
-        { text: 'Dashboard', href: '/adminlogin' }
+        { text: 'Dashboard', href: '/$adminlogin' }
       ],
       navItems: [
         { text: 'Home', href: '#home', isActive: true },
