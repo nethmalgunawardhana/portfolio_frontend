@@ -63,13 +63,13 @@ import Skill from '~/components/Skillsection.vue'
 import ProjectCarousel from '~/components/ProjectCarousel.vue'
 import Contact from '~/components/contact.vue'
 import bloglist from '~/components/bloglist.vue'
-
+const config = useRuntimeConfig()
 const showBackToTop = ref(false)
 const isNavbarFixed = ref(false)
 const isChatbotOpen = ref(false)
 const userInput = ref('')
 const chatHistory = ref([])
-const config = useRuntimeConfig()
+
 const handleScroll = () => {
   showBackToTop.value = window.scrollY > 200
   isNavbarFixed.value = window.scrollY > 0
