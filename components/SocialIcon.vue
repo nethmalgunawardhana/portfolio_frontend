@@ -12,8 +12,7 @@
   const icons = [
     { link: '#', class: 'fa-facebook', hoverColor: 'hover:text-[#3b5998]' },
     { link: '#', class: 'fa-twitter', hoverColor: 'hover:text-[#00aced]' },
-    { link: '#', class: 'fa-google-plus-g', hoverColor: 'hover:text-[#dd4b39]' },
-    { link: '#', class: 'fa-linkedin', hoverColor: 'hover:text-[#007bb6]' },
+    { link: 'https://www.linkedin.com/in/nethmal-gunawardhana-12a9b8272/', class: 'fa-linkedin', hoverColor: 'hover:text-[#007bb6]' },
     { link: '#', class: 'fa-instagram', hoverColor: 'hover:text-[#e4405f]' },
   ];
   </script>
