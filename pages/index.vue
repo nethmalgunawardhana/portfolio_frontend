@@ -69,7 +69,7 @@ const isNavbarFixed = ref(false)
 const isChatbotOpen = ref(false)
 const userInput = ref('')
 const chatHistory = ref([])
-
+const config = useRuntimeConfig()
 const handleScroll = () => {
   showBackToTop.value = window.scrollY > 200
   isNavbarFixed.value = window.scrollY > 0
@@ -94,7 +94,7 @@ const sendMessage = async () => {
 
   try {
     // Send message to backend
-    const response = await fetch('/chat', {
+    const response = await fetch(`${config.public.apiBase}/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -118,7 +118,6 @@ const sendMessage = async () => {
   // Clear user input
   userInput.value = ''
 }
-
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
