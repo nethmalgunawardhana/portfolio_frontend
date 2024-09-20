@@ -68,7 +68,9 @@ const showBackToTop = ref(false)
 const isNavbarFixed = ref(false)
 const isChatbotOpen = ref(false)
 const userInput = ref('')
-const chatHistory = ref([])
+const chatHistory = ref([
+  { role: 'Bot', text: 'Hello! How can I assist you today?' }
+])
 
 const handleScroll = () => {
   showBackToTop.value = window.scrollY > 200
@@ -94,7 +96,7 @@ const sendMessage = async () => {
 
   try {
     // Send message to backend
-    const response = await fetch(`${config.public.apiBase}/chat`, {
+    const response = await fetch(`${config.public.apiBase}/chatbot`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
