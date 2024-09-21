@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import Navbar from '~/components/Navbar.vue'
 import Aboutme from '~/components/Aboutme.vue'
 import Card from '~/components/card.vue'
@@ -115,7 +115,8 @@ const toggleChatbot = () => {
 const sendMessage = async () => {
   if (!userInput.value.trim()) return
   scrollToBottom()
-  chatHistory.value.push({ role: 'User', text: userInput.value })
+  const message = userInput.value.trim()
+  chatHistory.value.push({ role: 'User', text: message })
   userInput.value = ''
   nextTick(() => {
     scrollToBottom()
@@ -129,7 +130,7 @@ const sendMessage = async () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ message: userInput.value }),
+      body: JSON.stringify({ message: message }),
     })
 
     if (!response.ok) {
@@ -177,7 +178,7 @@ onUnmounted(() => {
 .dot {
   width: 8px;
   height: 8px;
-  background-color: #202543;
+  background-color: #2d7c30;
   border-radius: 50%;
   margin: 0 4px;
   animation: bounce 1.4s infinite ease-in-out both;

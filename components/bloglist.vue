@@ -98,7 +98,7 @@ onMounted(fetchBlogPosts)
 
 .project-card {
   transition: transform 0.3s ease-in-out;
-  box-shadow: 0 10px 10px rgba(37, 121, 216, 0.897), 0 6px 6px rgb(22, 88, 153);
+  box-shadow: 0 5px 20px rgba(37, 121, 216, 0.897), 0 4px 6px rgb(22, 88, 153);
 }
 
 .project-card:hover {

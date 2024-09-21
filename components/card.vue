@@ -9,22 +9,17 @@
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white flex items-center justify-center lg:justify-start mb-4">
             I'M A <span class="text-blue-600 ml-2"><Hello /></span>
           </h2>
-          
-          <p class="mb-6 text-gray-300 text-sm sm:text-base">
-            Passionate about creating beautiful and functional designs. Let's bring your ideas to life!
-          </p>
-          <button class="bg-gradient-to-b from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg mb-6">
-            GET IN TOUCH
-          </button>
-          
           <div class="mt-4"> 
             <SocialIcon />
           </div>
+          <button class="bg-gradient-to-b from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg mt-6 ">
+            Download CV
+          </button>
         </div>
         
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-8 lg:mt-0">
           <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg animated-frame">
-            <img src="https://dpwalay.net/wp-content/uploads/2023/09/bad-boy-dp-for-whatsapp-11.jpg" alt="Nethmal" class="rounded-lg w-full shadow-2xl" />
+            <img src="../public/image2.jpeg" alt="Nethmal" class="rounded-lg w-full shadow-2xl" />
           </div>
         </div>
       </div>

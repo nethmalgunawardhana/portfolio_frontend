@@ -5,7 +5,7 @@
       <div class="w-full lg:w-1/3 lg:mr-8 mb-8 lg:mb-0">
         <div class="image-frame mx-auto" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2500">
           <img
-            src="https://via.placeholder.com/400x400"
+            src="../public/image1.jpeg"
             alt="Profile Image"
             class="rounded-full shadow-lg w-full h-full object-cover"
           />
@@ -32,14 +32,8 @@
             the web development field.
           </p>
         </div>
-        <!-- Animated Button -->
-        <a
-          href="#contact"
-          class="inline-block bg-gradient-to-b from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
-          data-aos="zoom-in" data-aos-delay="200"
-        >
-          Let's Connect
-        </a>
+     
+       
       </div>
     </div>
   </section>
