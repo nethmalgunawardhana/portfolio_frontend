@@ -19,7 +19,7 @@
         </h2>
         <div data-aos="fade-left" data-aos-mirror="true" data-aos-once="false">
           <p class="text-base sm:text-lg text-gray-400 mb-6">
-            Hi, I'm [Your Name], a passionate web developer with a strong focus on building
+            Hi, I'm Nethmal, a passionate web developer with a strong focus on building
             responsive and high-quality websites. I specialize in frontend development and enjoy
             creating user-friendly and efficient web applications using modern technologies like
             Vue.js, Nuxt.js, and Tailwind CSS.
@@ -27,7 +27,7 @@
         </div>
         <div data-aos="fade-left" data-aos-delay="200" data-aos-mirror="true" data-aos-once="false">
           <p class="text-base sm:text-lg text-gray-400 mb-6">
-            With over [X] years of experience, I have honed my skills in JavaScript, CSS, and HTML.
+            With over 5 years of experience, I have honed my skills in JavaScript, CSS, and HTML.
             I'm always eager to learn and stay updated with the latest technologies and trends in
             the web development field.
           </p>
