@@ -24,10 +24,7 @@
             </svg>
           </button>
           <div v-if="isUserMenuOpen" class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md overflow-hidden shadow-xl z-10">
-            <div class="px-4 py-3">
-              <span class="block text-sm">Nethmal Gunawardhana</span>
-              <span class="block text-sm text-gray-400 truncate">nethmalgunawardhana@gmail.com</span>
-            </div>
+           
             <ul>
               <li v-for="item in userMenuItems" :key="item.text">
                 <NuxtLink

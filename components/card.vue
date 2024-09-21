@@ -1,23 +1,26 @@
 <template>
   <div class="bg-navy-900 text-white min-h-screen flex flex-col">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 lg:pt-24">
       <div class="flex flex-col lg:flex-row items-center justify-between">
-        <div class="w-full lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left">
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4">
+        <div class="w-full lg:w-1/2 order-2 lg:order-1 mb-8 lg:mb-0 text-center lg:text-left">
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">
+            <span class="text-white-600">Hi,</span> 
             <span class="text-blue-600">I'M</span> <span class="text-white">Nethmal<br>Gunawardhana</span>
           </h1>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white flex items-center justify-center lg:justify-start mb-4">
+          
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white flex items-center justify-center lg:justify-start mb-4">
             I'M A <span class="text-blue-600 ml-2"><Hello /></span>
           </h2>
+          <span class="text-gray-400 text-base sm:text-lg">Passionate IT undergraduate skilled in web development, design, and programming, seeking a software engineering internship. Eager to explore AI and machine learning while contributing to innovative projects</span>
           <div class="mt-4"> 
             <SocialIcon />
           </div>
-          <button class="bg-gradient-to-b from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg mt-6 ">
+          <button class="bg-gradient-to-b from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg mt-6">
             Download CV
           </button>
         </div>
         
-        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-8 lg:mt-0">
+        <div class="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center lg:justify-end mb-8 lg:mb-0">
           <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg animated-frame">
             <img src="../public/image2.jpeg" alt="Nethmal" class="rounded-lg w-full shadow-2xl" />
           </div>
@@ -47,6 +50,7 @@ import AnimatedCounter from './bar.vue'
 
 @media (max-width: 640px) {
   .container {
+    margin-top: 10px;
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -81,16 +85,14 @@ import AnimatedCounter from './bar.vue'
   width: 200%;
   height: 200%;
   background: conic-gradient(transparent, rgba(0, 208, 255, 0.977), transparent 40%);
-  animation: rotate 2s linear infinite ;
+  animation: rotate 2s linear infinite;
   border-radius: 50%;
-  
 }
 
 .animated-frame::after {
   background: conic-gradient(transparent, rgba(0, 255, 221, 0.636), transparent 50%);
   animation-duration: 3s;
   animation-direction: reverse;
- 
 }
 
 .animated-frame img {
