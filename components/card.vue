@@ -3,12 +3,12 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 lg:pt-24">
       <div class="flex flex-col lg:flex-row items-center justify-between">
         <div class="w-full lg:w-1/2 order-2 lg:order-1 mb-8 lg:mb-0 text-center lg:text-left">
-          <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">
+          <h1 class="text-4xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">
             <span class="text-white-600">Hi,</span> 
             <span class="text-blue-600">I'M</span> <span class="text-white">Nethmal<br>Gunawardhana</span>
           </h1>
           
-          <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white flex items-center justify-center lg:justify-start mb-4">
+          <h2 class="text-4xl sm:text-2xl lg:text-3xl font-bold text-white flex items-center justify-center lg:justify-start mb-4">
             I'M A <span class="text-blue-600 ml-2"><Hello /></span>
           </h2>
           <span class="text-gray-400 text-base sm:text-lg">Passionate IT undergraduate skilled in web development, design, and programming, seeking a software engineering internship. Eager to explore AI and machine learning while contributing to innovative projects</span>

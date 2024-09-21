@@ -265,7 +265,7 @@ onUnmounted(() => {
   height: calc(100% - 50px);
   display: flex;
   flex-direction: column;
-  background-color: #202543;
+  background-color: #e4e4e4;
 }
 
 .chat {
@@ -296,7 +296,7 @@ onUnmounted(() => {
 }
 
 .message p {
-  background-color: #0379ce;
+  background-color: #3b82f6;
   padding: 8px;
   border-radius: 8px;
   max-width: calc(100% - 40px);
@@ -312,7 +312,7 @@ onUnmounted(() => {
 }
 
 .message.user p {
-  background-color: #066b70;
+  background-color: #4ade80;
 }
 
 .chatbot-input {

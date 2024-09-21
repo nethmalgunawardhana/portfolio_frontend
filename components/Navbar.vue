@@ -7,36 +7,16 @@
       <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <div class="relative">
           <button
-            @click="toggleUserMenu"
+            @click="navigateToDashboard"
             type="button"
-            class="flex items-center text-sm rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            id="user-menu-button"
-            :aria-expanded="isUserMenuOpen"
+            class="flex items-center text-sm "
+            id="dashboard-button"
           >
-            <span class="sr-only">Open user menu</span>
-            <div class="w-10 h-10 rounded-full border-2 border-green-500 flex items-center justify-center overflow-hidden">
-              <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-              </svg>
+            <span class="sr-only">Go to dashboard</span>
+            <div class=" flex items-center justify-center overflow-hidden">
+              <img src="../public/dashboard2.png" alt="Dashboard" class="w-12 h-10 " />
             </div>
-            <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
           </button>
-          <div v-if="isUserMenuOpen" class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md overflow-hidden shadow-xl z-10">
-           
-            <ul>
-              <li v-for="item in userMenuItems" :key="item.text">
-                <NuxtLink
-                  :to="item.href"
-                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700"
-                  @click="closeUserMenu"
-                >
-                  {{ item.text }}
-                </NuxtLink>
-              </li>
-            </ul>
-          </div>
         </div>
         <button
           @click="toggleMobileMenu"
@@ -78,12 +58,8 @@
 export default {
   data() {
     return {
-      isUserMenuOpen: false,
       isMobileMenuOpen: false,
       isScrolled: false,
-      userMenuItems: [
-        { text: 'Dashboard', href: '/$adminlogin' }
-      ],
       navItems: [
         { text: 'Home', href: '#home', isActive: true },
         { text: 'About', href: '#about', isActive: false },
@@ -95,11 +71,9 @@ export default {
     }
   },
   methods: {
-    toggleUserMenu() {
-      this.isUserMenuOpen = !this.isUserMenuOpen
-    },
-    closeUserMenu() {
-      this.isUserMenuOpen = false
+    navigateToDashboard() {
+      // Replace with your actual dashboard route
+      this.$router.push('/$adminlogin')
     },
     toggleMobileMenu() {
       this.isMobileMenuOpen = !this.isMobileMenuOpen
