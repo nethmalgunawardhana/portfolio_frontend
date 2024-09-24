@@ -9,14 +9,14 @@
           <div 
             v-for="(post, index) in posts" 
             :key="index" 
-            class="project-card inline-block mr-8 mb-5 bg-gray-800 rounded-lg overflow-hidden shadow-lg w-80 sm:w-96 md:w-96 h-96 transition-transform duration-300 ease-in-out"
+            class="project-card inline-block mr-8 mb-5 bg-gray-800 rounded-lg overflow-hidden shadow-lg max-w-full transition-transform duration-300 ease-in-out"
           >
-            <div class="relative group overflow-hidden rounded-lg shadow-lg">
-                <img 
+            <div class="relative group overflow-hidden rounded-t-lg shadow-lg h-48 sm:h-56">
+              <img 
                 :src="post.imageUrl"
                 :alt="post.title" 
-                class="h-72 sm:h-80 w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
               <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <a 
                   :href="post.url"
@@ -28,7 +28,9 @@
                 </a>
               </div>
             </div>
-            <p class="text-center text-white mt-4 p-4 text-sm sm:text-base whitespace-normal">{{ post.title }}</p>
+            <div class="p-4">
+              <h3 class="text-white text-sm sm:text-base text-center break-words">{{ post.title }}</h3>
+            </div>
           </div>
         </div>
         <button @click="scrollLeft" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 hover:bg-opacity-75 text-white p-2 rounded-r">
@@ -99,6 +101,8 @@ onMounted(fetchBlogPosts)
 .project-card {
   transition: transform 0.3s ease-in-out;
   box-shadow: 0 5px 20px rgba(37, 121, 216, 0.897), 0 4px 6px rgb(22, 88, 153);
+  min-width: 250px; /* Minimum width to prevent cards from being too narrow */
+  max-width: fit-content; /* Allow width to grow based on content */
 }
 
 .project-card:hover {
@@ -118,5 +122,11 @@ onMounted(fetchBlogPosts)
   .project-card:hover {
     transform: translateY(-20px);
   }
+}
+
+h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
