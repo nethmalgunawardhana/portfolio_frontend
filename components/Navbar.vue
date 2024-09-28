@@ -1,20 +1,46 @@
 <template>
   <nav class="bg-gray-900 text-white fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="{ 'border-b-2 border-blue-600': isScrolled }">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <NuxtLink to="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap">portfolio</span>
-      </NuxtLink>
-      <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        <div class="relative">
+      <div class="flex items-center">
+        <NuxtLink to="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <span class="self-center text-xl md:text-2xl font-semibold whitespace-nowrap">portfolio</span>
+        </NuxtLink>
+      </div>
+     
+      <div class="hidden md:flex md:items-center md:space-x-8">
+        <ul class="flex flex-row space-x-4">
+          <li v-for="(item, index) in navItems" :key="index">
+            <NuxtLink
+              :to="item.href"
+              :class="[
+                'block py-2 px-3',
+                item.isActive 
+                  ? 'text-blue-500' 
+                  : 'text-gray-300 hover:text-blue-500'
+              ]"
+              :aria-current="item.isActive ? 'page' : undefined"
+              @click="handleNavItemClick(item)"
+            >
+              {{ item.text }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex items-center md:order-2 space-x-3 md:space-x-4 rtl:space-x-reverse">
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-blue-900 transition-colors duration-300">
+          Github Profile
+        </a>
+        <div class="relative hidden md:block">
           <button
             @click="navigateToDashboard"
             type="button"
-            class="flex items-center text-sm "
+            class="flex items-center text-sm"
             id="dashboard-button"
           >
             <span class="sr-only">Go to dashboard</span>
-            <div class=" flex items-center justify-center overflow-hidden">
-              <img src="../public/dashboard2.png" alt="Dashboard" class="w-12 h-10 " />
+            <div class="flex items-center justify-center overflow-hidden">
+              <img src="../public/dashboard3.png" alt="Dashboard" class="w-10 h-10" />
             </div>
           </button>
         </div>
@@ -31,22 +57,41 @@
           </svg>
         </button>
       </div>
-      <div :class="{ 'hidden': !isMobileMenuOpen }" class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-user">
-        <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 mobile-menu">
+      <div :class="{ 'hidden': !isMobileMenuOpen }" class="items-center justify-between w-full md:hidden" id="navbar-user">
+        <ul class="flex flex-col font-medium mt-4 mobile-menu">
           <li v-for="(item, index) in navItems" :key="index">
             <NuxtLink
               :to="item.href"
               :class="[
-                'block py-2 px-3 rounded md:p-0',
+                'block py-2 px-3',
                 item.isActive 
-                  ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-500' 
-                  : 'text-gray-300 hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500'
+                  ? 'text-white bg-blue-700' 
+                  : 'text-gray-300 hover:bg-gray-700 hover:text-white'
               ]"
               :aria-current="item.isActive ? 'page' : undefined"
               @click="handleNavItemClick(item)"
             >
               {{ item.text }}
             </NuxtLink>
+          </li>
+          <li>
+            <a 
+              href="https://github.com/nethmalgunawardhana" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="block py-2 px-3 text-gray-300 hover:bg-gray-700 hover:text-white"
+              @click="closeMobileMenu"
+            >
+              Github Profile
+            </a>
+          </li>
+          <li>
+            <button
+              @click="navigateToDashboard"
+              class="w-full text-left py-2 px-3 text-gray-300 hover:bg-gray-700 hover:text-white"
+            >
+              Dashboard
+            </button>
           </li>
         </ul>
       </div>
@@ -72,8 +117,8 @@ export default {
   },
   methods: {
     navigateToDashboard() {
-      // Replace with your actual dashboard route
       this.$router.push('/$adminlogin')
+      this.closeMobileMenu()
     },
     toggleMobileMenu() {
       this.isMobileMenuOpen = !this.isMobileMenuOpen
@@ -90,11 +135,10 @@ export default {
       })
       this.closeMobileMenu()
       
-      // Smooth scroll to the target section
       const targetId = item.href.substring(1)
       const targetElement = document.getElementById(targetId)
       if (targetElement) {
-        const navbarHeight = 80 // This should match the navbar height
+        const navbarHeight = 80
         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight
         window.scrollTo({
           top: targetPosition,
@@ -120,23 +164,24 @@ nav {
 @media (max-width: 768px) {
   .mobile-menu {
     position: fixed;
-    top: 80px;
+    top: 60px;
     left: 0;
     right: 0;
     background-color: #111827;
-    padding: 1rem;
-    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 0;
     z-index: 40;
   }
 
-  .mobile-menu a {
+  .mobile-menu a, .mobile-menu button {
     color: #D1D5DB;
-    padding: 0.5rem;
+    padding: 0.75rem 1rem;
     display: block;
-    border-radius: 0.25rem;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #1F2937;
   }
 
-  .mobile-menu a:hover {
+  .mobile-menu a:hover, .mobile-menu button:hover {
     background-color: #374151;
   }
 
@@ -146,3 +191,4 @@ nav {
   }
 }
 </style>
+

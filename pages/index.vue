@@ -20,15 +20,12 @@
       <Contact/>
     </div>
 
-     <!-- Chatbot Interface -->
-     <div class="chatbot-container" :class="{ 'chatbot-open': isChatbotOpen,'shift-left': showBackToTop }">
-      <div class="chatbot-header " @click="toggleChatbot">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-robot" viewBox="0 0 16 16">
-  <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
-  <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
-</svg>
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container" :class="{ 'chatbot-open': isChatbotOpen, 'shift-left': showBackToTop }">
+      <div class="chatbot-header" @click="toggleChatbot">
+        <img src="../public/chat.png" alt="Chatbot" />
       </div>
-      <div v-show="isChatbotOpen" class="chatbot-body  ">
+      <div v-show="isChatbotOpen" class="chatbot-body">
         <div class="chat" ref="chatContainer">
           <div v-for="(message, index) in chatHistory" :key="index" class="message" :class="message.role.toLowerCase()">
             <div class="message-icon" :class="message.role.toLowerCase()">
@@ -38,10 +35,10 @@
             <p>{{ message.text }}</p>
           </div>
           <div v-if="isLoading" class="loading-animation">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
         </div>
         <div class="chatbot-input">
           <input v-model="userInput" placeholder="Type a message..." @keyup.enter="sendMessage" />
@@ -49,6 +46,7 @@
         </div>
       </div>
     </div>
+
     <button
       v-show="showBackToTop"
       class="back-to-top"
@@ -95,7 +93,6 @@ const scrollToTop = () => {
   })
 }
 
-
 const scrollToBottom = () => {
   if (chatContainer.value) {
     chatContainer.value.scrollTop = chatContainer.value.scrollHeight
@@ -110,7 +107,6 @@ const toggleChatbot = () => {
     })
   }
 }
-
 
 const sendMessage = async () => {
   if (!userInput.value.trim()) return
@@ -148,9 +144,8 @@ const sendMessage = async () => {
       scrollToBottom()
     })
   }
-
- 
 }
+
 watch(chatHistory, () => {
   nextTick(() => {
     scrollToBottom()
@@ -167,7 +162,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-
 .loading-animation {
   display: flex;
   justify-content: center;
@@ -196,6 +190,7 @@ onUnmounted(() => {
   0%, 80%, 100% { transform: scale(0); }
   40% { transform: scale(1); }
 }
+
 .back-to-top {
   position: fixed;
   bottom: 20px;
@@ -233,39 +228,47 @@ onUnmounted(() => {
 .chatbot-container {
   position: fixed;
   bottom: 20px;
-  right: 80px;
-  width: 48px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: all 0.3s ease;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .chatbot-open {
+  width: 350px;
   height: 500px;
-  width:400px
+  border-radius: 10px;
 }
+
 .shift-left {
   right: 80px;
 }
 
 .chatbot-header {
+  width: 100%;
+  height: 60px;
   background: linear-gradient(to right, #4ade80, #3b82f6);
-  color: white;
-  padding: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 
+.chatbot-header img {
+  width: 30px;
+  height: 30px;
+}
+
 .chatbot-body {
-  height: calc(100% - 50px);
+  height: calc(100% - 60px);
   display: flex;
   flex-direction: column;
-  background-color: #e4e4e4;
+  background-color: #f0f0f0;
 }
 
 .chat {
@@ -278,7 +281,6 @@ onUnmounted(() => {
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
-
 }
 
 .message-icon {
@@ -297,6 +299,7 @@ onUnmounted(() => {
 
 .message p {
   background-color: #3b82f6;
+  color: white;
   padding: 8px;
   border-radius: 8px;
   max-width: calc(100% - 40px);
@@ -324,14 +327,14 @@ onUnmounted(() => {
 .chatbot-input input {
   flex-grow: 1;
   padding: 8px;
-  border: 1px solid #553737;
+  border: 1px solid #ccc;
   border-radius: 4px;
   margin-right: 5px;
 }
 
 .chatbot-input button {
   background: linear-gradient(to right, #4ade80, #3b82f6);
-  color: rgb(39, 32, 32);
+  color: white;
   border: none;
   padding: 8px 15px;
   border-radius: 4px;
@@ -343,6 +346,7 @@ onUnmounted(() => {
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 @media (max-width: 768px) {
   .chatbot-container {
     right: 10px;

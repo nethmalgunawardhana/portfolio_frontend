@@ -9,28 +9,18 @@
           <div 
             v-for="(post, index) in posts" 
             :key="index" 
-            class="project-card inline-block mr-8 mb-5 bg-gray-800 rounded-lg overflow-hidden shadow-lg max-w-full transition-transform duration-300 ease-in-out"
+            class="project-card inline-block mr-8 mb-5 bg-gray-800 border border-blue-600 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 max-w-sm transition-transform duration-300 ease-in-out"
           >
-            <div class="relative group overflow-hidden rounded-t-lg shadow-lg h-48 sm:h-56">
+            <a :href="post.url" target="_blank" rel="noopener noreferrer">
               <img 
                 :src="post.imageUrl"
                 :alt="post.title" 
-                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                class="rounded-t-lg w-full h-48 sm:h-56 object-cover"
               />
-              <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a 
-                  :href="post.url"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-white text-2xl hover:text-indigo-400 transition-colors duration-300"
-                >
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
+              <div class="p-5">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{{ post.title }}</h5>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="text-white text-sm sm:text-base text-center break-words">{{ post.title }}</h3>
-            </div>
+            </a>
           </div>
         </div>
         <button @click="scrollLeft" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 hover:bg-opacity-75 text-white p-2 rounded-r">
@@ -100,9 +90,9 @@ onMounted(fetchBlogPosts)
 
 .project-card {
   transition: transform 0.3s ease-in-out;
-  box-shadow: 0 5px 20px rgba(37, 121, 216, 0.897), 0 4px 6px rgb(22, 88, 153);
-  min-width: 250px; /* Minimum width to prevent cards from being too narrow */
-  max-width: fit-content; /* Allow width to grow based on content */
+  box-shadow: 0 5px 20px rgba(37, 121, 216, 0.2), 0 4px 6px rgba(22, 88, 153, 0.1);
+  min-width: 250px;
+  max-width: 384px; /* max-w-sm equivalent */
 }
 
 .project-card:hover {
@@ -124,9 +114,12 @@ onMounted(fetchBlogPosts)
   }
 }
 
-h3 {
-  white-space: nowrap;
+h5 {
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 </style>
