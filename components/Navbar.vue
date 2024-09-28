@@ -28,7 +28,7 @@
       </div>
 
       <div class="flex items-center md:order-2 space-x-3 md:space-x-4 rtl:space-x-reverse">
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-blue-900 transition-colors duration-300">
+        <a href="https://github.com/nethmalgunawardhana" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-blue-900 transition-colors duration-300">
           Github Profile
         </a>
         <div class="relative hidden md:block">
