@@ -252,7 +252,7 @@ onUnmounted(() => {
 .chatbot-header {
   width: 100%;
   height: 60px;
-  background: linear-gradient(to right, #4ade80, #3b82f6);
+  background: linear-gradient(to right, #174469, #3b82f6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -298,7 +298,7 @@ onUnmounted(() => {
 }
 
 .message p {
-  background-color: #3b82f6;
+  background-color: #163464;
   color: white;
   padding: 8px;
   border-radius: 8px;
@@ -315,7 +315,7 @@ onUnmounted(() => {
 }
 
 .message.user p {
-  background-color: #4ade80;
+  background-color: #043b4f;
 }
 
 .chatbot-input {
@@ -333,7 +333,7 @@ onUnmounted(() => {
 }
 
 .chatbot-input button {
-  background: linear-gradient(to right, #4ade80, #3b82f6);
+  background: linear-gradient(to right, #222f5b, #3b82f6);
   color: white;
   border: none;
   padding: 8px 15px;
