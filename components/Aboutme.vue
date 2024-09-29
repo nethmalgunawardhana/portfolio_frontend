@@ -20,9 +20,9 @@
         <div data-aos="fade-left" data-aos-mirror="true" data-aos-once="false">
           <p class="text-base sm:text-lg text-gray-400 mb-6">
             Hi, I'm Nethmal, a passionate web developer with a strong focus on building
-            responsive and high-quality websites. I specialize in frontend development and enjoy
+            responsive and high-quality websites. I specialize in Full Stack development and enjoy
             creating user-friendly and efficient web applications using modern technologies like
-            Vue.js, Nuxt.js, and Tailwind CSS.
+            Vue.js, Nuxt.js,React.js and Tailwind CSS.
           </p>
         </div>
         <div data-aos="fade-left" data-aos-delay="200" data-aos-mirror="true" data-aos-once="false">
