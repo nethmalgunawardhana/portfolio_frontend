@@ -96,16 +96,15 @@ const skills = ref([
   { name: 'Vue.js', percentage: 75, icon: vueIcon, category: 'Frontend Development' },
   { name: 'Angular.js', percentage: 70, icon: angularIcon, category: 'Frontend Development' },
   { name: 'Tailwind CSS', percentage: 80, icon: tailwindIcon, category: 'Frontend Development' },
-  { name: 'Figma', percentage: 70, icon: figmaIcon, category: 'Frontend Development' },
-  { name:'Nuxt3',persentage:60,icon:NuxtIcon,category: 'Frontend Development'},
+  { name:'Nuxt3',percentage: 80,icon:NuxtIcon,category: 'Frontend Development'},
+  { name: 'TypeScript', percentage: 75, icon: typescriptIcon, category: 'Frontend Development' },
 
   // Backend Development
   { name: 'Node.js', percentage: 80, icon: nodeIcon, category: 'Backend Development' },
   { name: 'Python', percentage: 85, icon: pythonIcon, category: 'Backend Development' },
   { name: 'PHP', percentage: 75, icon: phpIcon, category: 'Backend Development' },
   { name: 'Java', percentage: 70, icon: javaIcon, category: 'Backend Development' },
-  { name: 'C', percentage: 65, icon: cIcon, category: 'Backend Development' },
-  { name: 'C++', percentage: 60, icon: cppIcon, category: 'Backend Development' },
+
 
   // Database
   { name: 'MongoDB', percentage: 75, icon: mongodbIcon, category: 'Database' },
@@ -113,9 +112,12 @@ const skills = ref([
 
 
   // Other Technologies
-  { name: 'TypeScript', percentage: 75, icon: typescriptIcon, category: 'Other Technologies' },
-  { name: 'jQuery', percentage: 80, icon: jqueryIcon, category: 'Other Technologies' },
-  { name: 'Photoshop', percentage: 70, icon: photoshopIcon, category: 'Other Technologies' },
+  
+  { name: 'jQuery', percentage: 80, icon: jqueryIcon, category: 'Others' },
+  { name: 'Photoshop', percentage: 70, icon: photoshopIcon, category: 'Others' },
+  { name: 'Figma', percentage: 70, icon: figmaIcon, category: 'Others' },
+  { name: 'C', percentage: 65, icon: cIcon, category: 'Others' },
+  { name: 'C++', percentage: 60, icon: cppIcon, category: 'Others' },
 ])
 
 const categorizedSkills = computed(() => {
