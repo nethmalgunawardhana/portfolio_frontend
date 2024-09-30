@@ -127,7 +127,7 @@ const updateProject = async () => {
 
     // Reset form and refresh project list
     selectedProject.value = { id: '', name: '', description: '', github: '', demo: '', image: null }
-    const projectsResponse = await fetch('http://localhost:5000/projectsdelete')
+    const projectsResponse = await fetch(`${config.public.apiBase}/projectsdelete`)
     projects.value = await projectsResponse.json()
 
   } catch (error) {

@@ -115,7 +115,7 @@ const updateBlog = async () => {
 
     // Reset form and refresh blog list
     selectedBlog.value = { id: '', title: '', url: '', image: null }
-    const blogsResponse = await fetch('http://localhost:5000/blogs')
+    const blogsResponse = await fetch(`${config.public.apiBase}/blogs`)
     blogs.value = await blogsResponse.json()
 
   } catch (error) {
