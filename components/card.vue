@@ -22,7 +22,7 @@
         
         <div class="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center lg:justify-end mb-8 lg:mb-0">
           <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg animated-frame">
-            <img src="https://ik.imagekit.io/mskpaaeir/profile.png" alt="Nethmal" class="rounded-lg w-full shadow-2xl" loading="lazy" />
+            <img src="https://ik.imagekit.io/mskpaaeir/profile.png" alt="Nethmal" class="rounded-lg w-full shadow-2xl" />
           </div>
         </div>
       </div>
