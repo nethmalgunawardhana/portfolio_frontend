@@ -1,5 +1,5 @@
 <template>
-  <section  id="skills" class="bg-gray-900 py-16">
+  <section id="skills" class="bg-gray-900 py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-white mb-12 text-center" data-aos="fade-up">My Skills</h2>
       <div v-for="(skills, categoryName) in categorizedSkills" :key="categoryName" class="mb-12">
@@ -9,8 +9,6 @@
             v-for="skill in skills"
             :key="skill.name"
             class="relative w-40 h-40 m-4 group"
-            @mouseenter="skill.isHovered = true"
-            @mouseleave="skill.isHovered = false"
             data-aos="zoom-in"
           >
             <svg class="w-full h-full transform rotate-[-90deg]" viewBox="0 0 120 120">
@@ -36,14 +34,8 @@
                 cy="60"
               />
             </svg>
-            <div 
-              class="absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-in-out"
-              :class="{ 'transform scale-110': skill.isHovered }"
-            >
+            <div class="absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:scale-110">
               <img :src="skill.icon" :alt="skill.name" class="w-16 h-16" />
-            </div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              
             </div>
             <p class="text-center mt-2 text-white font-semibold">{{ skill.name }}</p>
           </div>
@@ -58,66 +50,36 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-// Frontend Development Icons
-import htmlIcon from './assets/icons/html.png'
-import cssIcon from './assets/icons/css.png'
-import javascriptIcon from './assets/icons/js.png'
-import reactIcon from './assets/icons/react.png'
-import vueIcon from './assets/icons/vuejs.png'
-import angularIcon from './assets/icons/Angular.png'
-import tailwindIcon from './assets/icons/tailwind.png'
-import figmaIcon from './assets/icons/figma.png'
-import NuxtIcon from "./assets/icons/nuxt.png"
-
-
-// Backend Development Icons
-import nodeIcon from './assets/icons/Nodejs.png'
-import pythonIcon from './assets/icons/python.png'
-import phpIcon from './assets/icons/php.png'
-import javaIcon from './assets/icons/java.png'
-import cIcon from './assets/icons/c.png'
-import cppIcon from './assets/icons/c++.png'
-
-// Database Icons
-import mongodbIcon from './assets/icons/mongodb.png'
-import mysqlIcon from './assets/icons/mysql.png'
-
-// Other Technologies
-import typescriptIcon from './assets/icons/typescript.png'
-import jqueryIcon from './assets/icons/jquery.png'
-import photoshopIcon from './assets/icons/photoshop.png'
+const baseImageUrl = 'https://ik.imagekit.io/mskpaaeir/icons/'
 
 const skills = ref([
   // Frontend Development
-  { name: 'HTML5', percentage: 90, icon: htmlIcon, category: 'Frontend Development' },
-  { name: 'CSS3', percentage: 85, icon: cssIcon, category: 'Frontend Development' },
-  { name: 'JavaScript', percentage: 80, icon: javascriptIcon, category: 'Frontend Development' },
-  { name: 'React.js', percentage: 80, icon: reactIcon, category: 'Frontend Development' },
-  { name: 'Vue.js', percentage: 75, icon: vueIcon, category: 'Frontend Development' },
-  { name: 'Angular.js', percentage: 70, icon: angularIcon, category: 'Frontend Development' },
-  { name: 'Tailwind CSS', percentage: 80, icon: tailwindIcon, category: 'Frontend Development' },
-  { name:'Nuxt3',percentage: 80,icon:NuxtIcon,category: 'Frontend Development'},
-  { name: 'TypeScript', percentage: 75, icon: typescriptIcon, category: 'Frontend Development' },
+  { name: 'HTML5', percentage: 90, icon: `${baseImageUrl}html.png`, category: 'Frontend Development' },
+  { name: 'CSS3', percentage: 85, icon: `${baseImageUrl}css.png`, category: 'Frontend Development' },
+  { name: 'JavaScript', percentage: 80, icon: `${baseImageUrl}js.png`, category: 'Frontend Development' },
+  { name: 'React.js', percentage: 80, icon: `${baseImageUrl}react.png`, category: 'Frontend Development' },
+  { name: 'Vue.js', percentage: 75, icon: `${baseImageUrl}vuejs.png`, category: 'Frontend Development' },
+  { name: 'Angular.js', percentage: 70, icon: `${baseImageUrl}Angular.png`, category: 'Frontend Development' },
+  { name: 'Tailwind CSS', percentage: 80, icon: `${baseImageUrl}tailwind.png`, category: 'Frontend Development' },
+  { name: 'Nuxt3', percentage: 80, icon: `${baseImageUrl}nuxt.png`, category: 'Frontend Development' },
+  { name: 'TypeScript', percentage: 75, icon: `${baseImageUrl}typescript.png`, category: 'Frontend Development' },
 
   // Backend Development
-  { name: 'Node.js', percentage: 80, icon: nodeIcon, category: 'Backend Development' },
-  { name: 'Python', percentage: 85, icon: pythonIcon, category: 'Backend Development' },
-  { name: 'PHP', percentage: 75, icon: phpIcon, category: 'Backend Development' },
-  { name: 'Java', percentage: 70, icon: javaIcon, category: 'Backend Development' },
-
+  { name: 'Node.js', percentage: 80, icon: `${baseImageUrl}Nodejs.png`, category: 'Backend Development' },
+  { name: 'Python', percentage: 85, icon: `${baseImageUrl}python.png`, category: 'Backend Development' },
+  { name: 'PHP', percentage: 75, icon: `${baseImageUrl}php.png`, category: 'Backend Development' },
+  { name: 'Java', percentage: 70, icon: `${baseImageUrl}java.png`, category: 'Backend Development' },
 
   // Database
-  { name: 'MongoDB', percentage: 75, icon: mongodbIcon, category: 'Database' },
-  { name: 'Mysql', percentage: 60, icon: mysqlIcon, category: 'Database' },
-
+  { name: 'MongoDB', percentage: 75, icon: `${baseImageUrl}mongodb.png`, category: 'Database' },
+  { name: 'MySQL', percentage: 60, icon: `${baseImageUrl}mysql.png`, category: 'Database' },
 
   // Other Technologies
-  
-  { name: 'jQuery', percentage: 80, icon: jqueryIcon, category: 'Others' },
-  { name: 'Photoshop', percentage: 70, icon: photoshopIcon, category: 'Others' },
-  { name: 'Figma', percentage: 70, icon: figmaIcon, category: 'Others' },
-  { name: 'C', percentage: 65, icon: cIcon, category: 'Others' },
-  { name: 'C++', percentage: 60, icon: cppIcon, category: 'Others' },
+  { name: 'jQuery', percentage: 80, icon: `${baseImageUrl}jquery.png`, category: 'Others' },
+  { name: 'Photoshop', percentage: 70, icon: `${baseImageUrl}photoshop.png`, category: 'Others' },
+  { name: 'Figma', percentage: 70, icon: `${baseImageUrl}figma.png`, category: 'Others' },
+  { name: 'C', percentage: 65, icon: `${baseImageUrl}c.png`, category: 'Others' },
+  { name: 'C++', percentage: 60, icon: `${baseImageUrl}c++.png`, category: 'Others' },
 ])
 
 const categorizedSkills = computed(() => {
@@ -139,8 +101,7 @@ function getStrokeDashoffset(percentage) {
 onMounted(() => {
   AOS.init({
     duration: 1000,
-    once: false,
-    mirror: true,
+    once: true,
   })
 })
 
@@ -151,26 +112,34 @@ if (process.client) {
   })
 }
 
-// Refresh AOS on window resize
-let resizeTimeout
-const handleResize = () => {
-  clearTimeout(resizeTimeout)
-  resizeTimeout = setTimeout(() => {
-    AOS.refresh()
-  }, 100)
+// Debounce function
+function debounce(func, wait) {
+  let timeout
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout)
+      func(...args)
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+  }
 }
 
+// Debounced resize handler
+const debouncedHandleResize = debounce(() => {
+  AOS.refresh()
+}, 250)
+
 onMounted(() => {
-  window.addEventListener('resize', handleResize)
+  window.addEventListener('resize', debouncedHandleResize)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', handleResize)
+  window.removeEventListener('resize', debouncedHandleResize)
 })
 </script>
 
 <style scoped>  
-
 #skills {
   padding-top: 80px;
   margin-top: -80px;
