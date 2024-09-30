@@ -11,7 +11,7 @@
           <h2 class="text-4xl sm:text-2xl lg:text-3xl font-bold text-white flex items-center justify-center lg:justify-start mb-4">
             I'M A <span class="text-blue-600 ml-2"><Hello /></span>
           </h2>
-          <span class="text-gray-400 text-base sm:text-lg">Passionate IT undergraduate skilled in web development, design, and programming, seeking a software engineering internship. Eager to explore AI and machine learning while contributing to innovative projects</span>
+          <p class="text-gray-400 text-base sm:text-lg">Passionate IT undergraduate skilled in web development, design, and programming, seeking a software engineering internship. Eager to explore AI and machine learning while contributing to innovative projects</p>
           <div class="mt-4"> 
             <SocialIcon />
           </div>
@@ -22,7 +22,7 @@
         
         <div class="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center lg:justify-end mb-8 lg:mb-0">
           <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg animated-frame">
-            <img src="https://ik.imagekit.io/mskpaaeir/profile.png" alt="Nethmal" class="rounded-lg w-full shadow-2xl" />
+            <img src="https://ik.imagekit.io/mskpaaeir/profile.png" alt="Nethmal" class="rounded-lg w-full shadow-2xl" loading="lazy" />
           </div>
         </div>
       </div>
@@ -34,9 +34,11 @@
 </template>
 
 <script setup>
-import Hello from './Hello.vue';
-import SocialIcon from './SocialIcon.vue';
-import AnimatedCounter from './bar.vue'
+import { defineAsyncComponent } from 'vue';
+
+const Hello = defineAsyncComponent(() => import('./Hello.vue'));
+const SocialIcon = defineAsyncComponent(() => import('./SocialIcon.vue'));
+const AnimatedCounter = defineAsyncComponent(() => import('./bar.vue'));
 </script>
 
 <style scoped>

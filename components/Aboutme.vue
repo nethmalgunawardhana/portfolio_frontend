@@ -8,32 +8,29 @@
             src="../public/image1.jpeg"
             alt="Profile Image"
             class="rounded-full shadow-lg w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
       </div>
 
       <!-- Right Column: Content -->
       <div class="w-full lg:w-1/2 text-center lg:text-left">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-aos="zoom-in" data-aos-mirror="true" data-aos-once="false">
-          About Me
-        </h2>
-        <div data-aos="fade-left" data-aos-mirror="true" data-aos-once="false">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-aos="zoom-in">About Me</h2>
+        <div data-aos="fade-left">
           <p class="text-base sm:text-lg text-gray-400 mb-6">
             Hi, I'm Nethmal, a passionate web developer with a strong focus on building
             responsive and high-quality websites. I specialize in Full Stack development and enjoy
             creating user-friendly and efficient web applications using modern technologies like
-            Vue.js, Nuxt.js,React.js and Tailwind CSS.
+            Vue.js, Nuxt.js, React.js and Tailwind CSS.
           </p>
         </div>
-        <div data-aos="fade-left" data-aos-delay="200" data-aos-mirror="true" data-aos-once="false">
+        <div data-aos="fade-left" data-aos-delay="200">
           <p class="text-base sm:text-lg text-gray-400 mb-6">
             With over 5 years of experience, I have honed my skills in JavaScript, CSS, and HTML.
             I'm always eager to learn and stay updated with the latest technologies and trends in
             the web development field.
           </p>
         </div>
-     
-       
       </div>
     </div>
   </section>
@@ -47,8 +44,7 @@ import 'aos/dist/aos.css';
 onMounted(() => {
   AOS.init({
     duration: 1000,
-    mirror: true,
-    once: false,
+    once: true,
   });
 });
 
@@ -58,8 +54,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-@import 'animate.css/animate.min.css';
-
 .image-frame {
   position: relative;
   width: 280px;
@@ -82,7 +76,6 @@ onUnmounted(() => {
     height: 320px;
   }
 }
-
 
 #about {
   padding-top: 80px;
