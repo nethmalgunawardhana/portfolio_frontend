@@ -2,6 +2,7 @@
 // nuxt.config.{js,ts}
 // nuxt.config.ts
 export default defineNuxtConfig({
+  compatibilityDate: '2025-08-07',
   modules: [
     '@nuxtjs/tailwindcss'
   ],
@@ -20,5 +21,28 @@ export default defineNuxtConfig({
       ]
     }
   },
+
+  nitro: {
+    experimental: {
+      wasm: true
+    }
+  },
+
+  vite: {
+    define: {
+      global: 'globalThis',
+    },
+    resolve: {
+      alias: {
+        'form-data': '~/utils/form-data-polyfill.js'
+      }
+    },
+    optimizeDeps: {
+      include: ['axios'],
+      exclude: ['form-data']
+    }
+  },
+
+  ssr: true
  
 })

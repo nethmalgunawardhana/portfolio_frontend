@@ -1,5 +1,8 @@
 <template>
-  <div id="home" class="bg-gray-900 overflow-x-hidden">
+  <div id="home" class="bg-gray-900/95 overflow-x-hidden relative">
+    <!-- Particles Background -->
+    <ParticlesBackground />
+    
     <Navbar :class="{ 'navbar-fixed': isNavbarFixed }" />
    
     <div><card/></div>       
