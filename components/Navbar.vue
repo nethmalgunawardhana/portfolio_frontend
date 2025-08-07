@@ -31,19 +31,7 @@
         <a href="https://github.com/nethmalgunawardhana" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-blue-900 transition-colors duration-300">
           Github Profile
         </a>
-        <div class="relative hidden md:block">
-          <button
-            @click="navigateToDashboard"
-            type="button"
-            class="flex items-center text-sm"
-            id="dashboard-button"
-          >
-            <span class="sr-only">Go to dashboard</span>
-            <div class="flex items-center justify-center overflow-hidden">
-              <img src="../public/dashboard3.png" alt="Dashboard" class="w-10 h-10" />
-            </div>
-          </button>
-        </div>
+       
         <button
           @click="toggleMobileMenu"
           type="button"
@@ -85,14 +73,7 @@
               Github Profile
             </a>
           </li>
-          <li>
-            <button
-              @click="navigateToDashboard"
-              class="w-full text-left py-2 px-3 text-gray-300 hover:bg-gray-700 hover:text-white"
-            >
-              Dashboard
-            </button>
-          </li>
+          
         </ul>
       </div>
     </div>
