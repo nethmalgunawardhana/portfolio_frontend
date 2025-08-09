@@ -73,6 +73,34 @@ import ProjectCarousel from '~/components/ProjectCarousel.vue'
 import Contact from '~/components/contact.vue'
 import bloglist from '~/components/bloglist.vue'
 
+// SEO Meta Tags for Home Page
+useSeoMeta({
+  title: 'Nethmal Gunawardhana - Full Stack Developer Portfolio',
+  description: 'Welcome to my portfolio! I\'m a Full Stack Developer specializing in modern web technologies including React, Vue.js, Node.js, and more. Explore my projects and skills.',
+  ogTitle: 'Nethmal Gunawardhana - Full Stack Developer Portfolio',
+  ogDescription: 'Welcome to my portfolio! I\'m a Full Stack Developer specializing in modern web technologies including React, Vue.js, Node.js, and more. Explore my projects and skills.',
+  ogImage: 'https://nethmalgunawardhana.vercel.app/profile.png',
+  ogUrl: 'https://nethmalgunawardhana.vercel.app/',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Nethmal Gunawardhana - Full Stack Developer Portfolio',
+  twitterDescription: 'Welcome to my portfolio! I\'m a Full Stack Developer specializing in modern web technologies including React, Vue.js, Node.js, and more. Explore my projects and skills.',
+  twitterImage: 'https://nethmalgunawardhana.vercel.app/profile.png',
+})
+
+// Structured Data for better SEO
+useSchemaOrg([
+  {
+    '@type': 'Person',
+    name: 'Nethmal Gunawardhana',
+    jobTitle: 'Full Stack Developer',
+    url: 'https://nethmalgunawardhana.vercel.app',
+    image: 'https://nethmalgunawardhana.vercel.app/profile.png',
+    sameAs: [
+      // Add your social media URLs here
+    ]
+  }
+])
+
 const config = useRuntimeConfig()
 const showBackToTop = ref(false)
 const isNavbarFixed = ref(false)

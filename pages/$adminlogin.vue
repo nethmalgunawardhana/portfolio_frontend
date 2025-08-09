@@ -55,6 +55,13 @@ import { ref } from 'vue'
 import { useRouter } from 'nuxt/app'
 import Swal from 'sweetalert2'
 
+// SEO Meta Tags for Admin Login Page
+useSeoMeta({
+  title: 'Admin Login - Portfolio Management',
+  description: 'Admin login page for portfolio management.',
+  robots: 'noindex, nofollow', // Admin pages should not be indexed
+})
+
 const username = ref('')
 const password = ref('')
 const rememberMe = ref(false)

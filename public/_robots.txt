@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nethmalgunawardhana.vercel.app/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admindashboard
+Disallow: /adminlogin
+
+# Allow crawling of main portfolio areas
+Allow: /
+Allow: /dashboard

@@ -110,6 +110,13 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
+// SEO Meta Tags for Admin Dashboard Page
+useSeoMeta({
+  title: 'Admin Dashboard - Portfolio Management',
+  description: 'Admin dashboard for managing portfolio projects and blog posts.',
+  robots: 'noindex, nofollow', // Admin pages should not be indexed
+})
+
 const { data: projects, pending, error } = useFetch('http://localhost:5000/projects');
 const { data: blogs, pending: pendingBlogs, error: errorBlogs } = useFetch('http://localhost:5000/blogs');
 

@@ -42,6 +42,13 @@ import CreateBlogForm from '~/components/Createblogform.vue'
 import UpdateBlogForm from '~/components/updateblogform.vue'
 import DeleteBlogForm from '~/components/Deleteblogform.vue'
 
+// SEO Meta Tags for Dashboard Page
+useSeoMeta({
+  title: 'Dashboard - Portfolio Management',
+  description: 'Manage your portfolio content including projects and blog posts.',
+  robots: 'noindex, nofollow', // Private dashboard should not be indexed
+})
+
 const router = useRouter()
 
 const navItems = [
